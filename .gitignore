@@ -1,0 +1,35 @@
+# OS / editor
+.DS_Store
+*.session.sql
+
+# Python
+__pycache__/
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Generated databases (rebuild from datasets/*/loaders)
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.duckdb
+*.duckdb.wal
+dump.rdb
+appendonly.aof
+appendonlydir/
+
+# Local secrets
+.env
+!.env.example
+
+# Generated data. Store databases rebuild with datasets/store/generator/make_dbs.py;
+# people_products orders with generate_orders.py (classroom size is committed).
+datasets/store/generated/
+datasets/people_products/generated/*
+!datasets/people_products/generated/classroom/
+
+# Driver output (students commit theirs in their own repo)
+lab/api/starter_code/results/
