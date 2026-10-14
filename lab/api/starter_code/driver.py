@@ -6,10 +6,10 @@ Start the API first (python -m app.main), then from lab/api/starter_code/:
     python driver.py                       # all sizes, both variants
     python driver.py --sizes 10k 100k      # skip 1m while you are debugging
     python driver.py --only Q08 Q09        # rerun a few queries
-    python driver.py --base http://127.0.0.1:8002   # another engine's API
+    python driver.py --base http://127.0.0.1:8002 --out results_duckdb   # another engine's API
 
 For each (query, database) it calls the route RUNS times and keeps the median
-of the elapsed_ms values the API reports. Output, in results/:
+of the elapsed_ms values the API reports. Output, in results/ (or --out):
 
     results.csv    one row per (query, database): time, rows, plan
     results.md     the same numbers as a table, ready to paste into FINDINGS
@@ -31,7 +31,8 @@ from pathlib import Path
 import httpx
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[2]
+# FIELD_GUIDE: where the field-guide clone is, if this folder was copied out of it
+ROOT = Path(os.environ.get("FIELD_GUIDE", HERE.parents[2])).expanduser()
 DATA = Path(os.environ.get("DATA_DIR", ROOT / "datasets" / "store" / "generated" / "sqlite"))
 OUT = HERE / "results"
 RUNS = 5
@@ -88,6 +89,7 @@ def main(argv=None):
     p.add_argument("--sizes", nargs="+", default=SIZES, choices=SIZES)
     p.add_argument("--only", nargs="+", help="query ids to run, e.g. Q08 Q11-fast")
     p.add_argument("--runs", type=int, default=RUNS, help=f"calls per (query, db); default {RUNS}")
+    p.add_argument("--out", default=OUT, type=Path, help="folder for results.csv and results.md; default results/")
     a = p.parse_args(argv)
 
     jobs = [j for j in JOBS if not a.only or j[0] in a.only]
@@ -115,8 +117,8 @@ def main(argv=None):
                                 "rows": body["row_count"], "plan": " | ".join(body["plan"])})
                 print(f"{db:<11} {qid:<9} {ms:>10.2f} ms  {body['row_count']:>4} rows")
 
-    OUT.mkdir(exist_ok=True)
-    with open(OUT / "results.csv", "w", newline="") as fh:
+    a.out.mkdir(exist_ok=True)
+    with open(a.out / "results.csv", "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(results[0]))
         w.writeheader()
         w.writerows(results)
@@ -127,8 +129,8 @@ def main(argv=None):
              "| :--- | " + " | ".join("---:" for _ in dbs) + " |"]
     for qid, _, _ in jobs:
         lines.append(f"| {qid} | " + " | ".join(f"{ms[(qid, d)]:.2f}" for d in dbs) + " |")
-    (OUT / "results.md").write_text("\n".join(lines) + "\n")
-    print(f"\nwrote {OUT / 'results.csv'} and {OUT / 'results.md'}")
+    (a.out / "results.md").write_text("\n".join(lines) + "\n")
+    print(f"\nwrote {a.out / 'results.csv'} and {a.out / 'results.md'}")
 
 
 if __name__ == "__main__":

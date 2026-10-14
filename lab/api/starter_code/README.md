@@ -25,7 +25,7 @@ starter_code/
 ```
 
 The SQL isn't in `main.py`. Each route loads its query from
-[units/01_sqlite/06_queries/](../../../units/01_sqlite/06_queries/README.md),
+[engines/01_sqlite/06_queries/](../../../engines/01_sqlite/06_queries/README.md),
 so the `.sql` file is the only copy. Change the file, and the route changes.
 
 ## Setup
@@ -70,6 +70,7 @@ because the `app.` package-relative imports need the package context.
 | Variable          | Default                          | Read by                          |
 | ----------------- | -------------------------------- | -------------------------------- |
 | `DATA_DIR`        | `datasets/store/generated/sqlite/` | `experiment.py`, `driver.py`   |
+| `FIELD_GUIDE`     | the clone this folder sits in    | `experiment.py`, `driver.py`, tests: where to find `06_queries/` when this folder is copied into your own repo |
 | `BUSY_TIMEOUT_MS` | `5000`                           | `experiment.py` (08_concurrency) |
 | `HOST`, `PORT`    | `127.0.0.1`, `8001`              | `python -m app.main`             |
 | `RELOAD`          | `1` (set `0` to turn off)        | `python -m app.main`             |

@@ -1,5 +1,6 @@
 """
-The measurement API: the store query catalog behind FastAPI, on SQLite.
+The measurement API: the store query catalog behind FastAPI, on SQLite
+(or DuckDB / PostgreSQL / MongoDB: ENGINE=duckdb, postgres, or mongodb; see each engine's 07_explain/).
 
 Run it from lab/api/starter_code/, either way:
     python -m app.main                   # uses the __main__ block below (port 8001)
@@ -12,7 +13,9 @@ package context, which only `-m app.main` and uvicorn provide.)
 
 Each route is one row of the query catalog (datasets/store/query_catalog.md):
 the decorator holds the method and path, the function's parameters are the
-query-string parameters, and the SQL lives in units/01_sqlite/06_queries/.
+query-string parameters, and the SQL lives in engines/01_sqlite/06_queries/
+(engines/02_duckdb/06_queries/ with ENGINE=duckdb, engines/03_postgres/06_queries/ with ENGINE=postgres,
+engines/04_mongodb/06_queries/*.json with ENGINE=mongodb).
 Every route also takes ?db=<name>, e.g. ?db=noidx_1m.
 
 Three routes are yours to write: Q03, Q08, and Q15 (search for TODO). Most
@@ -26,16 +29,27 @@ passes.
 
 from __future__ import annotations
 
+import os
 import random
 from datetime import date
 
 from fastapi import Depends, FastAPI, Query
 from fastapi.responses import RedirectResponse
 
-from .experiment import ExpDB, get_exp_db, run_query, run_write  # noqa: F401  -- run_write: Q15
 from .models import NewPurchase  # noqa: F401  -- you need this for Q15
 
-app = FastAPI(title="Store measurement API (SQLite)")
+# ENGINE picks the harness: the routes below don't change (see 03_experiment_py/).
+ENGINE = os.environ.get("ENGINE", "sqlite")
+if ENGINE == "duckdb":
+    from .experiment_duckdb import ExpDB, get_exp_db, run_query, run_write, run_write_many  # noqa: F401
+elif ENGINE == "postgres":
+    from .experiment_postgres import ExpDB, get_exp_db, run_query, run_write, run_write_many  # noqa: F401
+elif ENGINE == "mongodb":
+    from .experiment_mongo import ExpDB, get_exp_db, run_query, run_write, run_write_many  # noqa: F401
+else:
+    from .experiment import ExpDB, get_exp_db, run_query, run_write, run_write_many  # noqa: F401  -- run_write: Q15
+
+app = FastAPI(title=f"Store measurement API ({ENGINE})")
 
 
 @app.get("/", include_in_schema=False)
@@ -166,13 +180,17 @@ def q14_cube_fast(start: date, end: date, min_purchases: int = Query(10, ge=1),
 #   body instead of the query string.
 
 
+@app.post("/purchases/fast", status_code=201)
+def q15_insert_purchases_fast(purchases: list[NewPurchase], db: ExpDB = Depends(get_exp_db)):
+    # Many purchases, one transaction, one commit. Compare with Q15 in 08_concurrency.
+    return run_write_many(db, "Q15-fast", [p.model_dump() for p in purchases])
+
+
 # --------------------------------------------------------------------------- #
 # Dev entrypoint:  python -m app.main   (run from lab/api/starter_code/)
 # --------------------------------------------------------------------------- #
 
 if __name__ == "__main__":
-    import os
-
     import uvicorn
 
     uvicorn.run(

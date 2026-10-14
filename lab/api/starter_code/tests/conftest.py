@@ -14,7 +14,8 @@ from pathlib import Path
 
 import pytest
 
-ROOT = Path(__file__).resolve().parents[4]
+# FIELD_GUIDE: where the field-guide clone is, if this folder was copied out of it
+ROOT = Path(os.environ.get("FIELD_GUIDE", Path(__file__).resolve().parents[4])).expanduser()
 sys.path.insert(0, str(ROOT / "datasets" / "store" / "generator"))
 
 
@@ -26,7 +27,7 @@ def client(tmp_path_factory):
     scale_data.build(str(data / "idx_10k.db"), customers=200, products=150,
                      zipcodes=60, purchases=3_000, skew=True, seed=7)
     con = __import__("sqlite3").connect(data / "idx_10k.db")
-    con.executescript((ROOT / "units/01_sqlite/05_load/summary_tables.sql").read_text())
+    con.executescript((ROOT / "engines/01_sqlite/05_load/summary_tables.sql").read_text())
     con.close()
 
     os.environ["DATA_DIR"] = str(data)

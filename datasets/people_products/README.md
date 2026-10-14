@@ -5,7 +5,7 @@ Raw people and product data that will become the **next version of the
 in more locations, and products with categories, descriptions, and inventory.
 
 > **Status:** staging. Used by the normalization exercise in
-> [SQLite 04_model Part B](../../units/01_sqlite/04_model/README.md). The
+> [SQLite 04_model Part B](../../engines/01_sqlite/04_model/README.md). The
 > experiments still use the current [`store`](../store/) dataset until this
 > one replaces it.
 
@@ -97,18 +97,8 @@ the raw people files change.
 
 ## Planned use
 
-1. **Generator source.** Generate many more purchases from these people and
-   products: realistic descriptions, categories, and sub-categories, with
-   customers spread across many locations for aggregation and join queries.
-2. **Normalization exercise.** More columns means more to split out. Candidates:
-
-   | From                                           | Split into                                   | Why                                                  |
-   | ---------------------------------------------- | -------------------------------------------- | ---------------------------------------------------- |
-   | `products.category`, `sub_category`            | `categories` → `sub_categories` → `products` | A two-level hierarchy (repeated text → foreign keys) |
-   | `people.credit_card`, `expiration_date`, `cvv` | `cards` (one person → many cards)            | Card facts don't depend on the person's key          |
-   | `people.state`, `zip`                          | `states` → `zipcodes`                        | `zip → state`, same as the current schema            |
-   | `people.password`                              | `credentials` (hashed)                       | Separate security-sensitive data from profile data   |
-   | `products.inventory`                           | stays, or `inventory` per location           | Real column for the hot-row load scenario            |
-
-3. **New pattern material.** `description` → full-text search (proposed Q16)
-   and later the vector track. `inventory` → hot-row concurrency.
+1. **Normalization exercise:** [SQLite 04_model Part B](../../engines/01_sqlite/04_model/README.md).
+2. **The next `store`:** once Part B is due, a reference schema for this data
+   can replace the current `store` for the experiments.
+3. **New pattern material:** `description` for full-text search (proposed
+   Q16) and the vector track; `inventory` for the hot-row load scenario (S3).

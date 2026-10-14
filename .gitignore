@@ -25,6 +25,8 @@ appendonlydir/
 .env
 !.env.example
 
+.claude.md
+
 # Generated data. Store databases rebuild with datasets/store/generator/make_dbs.py;
 # people_products orders with generate_orders.py (classroom size is committed).
 datasets/store/generated/
@@ -33,3 +35,16 @@ datasets/people_products/generated/*
 
 # Driver output (students commit theirs in their own repo)
 lab/api/starter_code/results/
+lab/api/starter_code/results_*/
+
+# Parquet exports from engines/02_duckdb/05_load/
+*.parquet
+
+# Armageddon: commit the .zip files only. These are what `zip_manager.py
+# unzip` extracts (and the dot-file copies `zip` leaves behind).
+datasets/armageddon/*.geojson
+datasets/armageddon/*.json
+
+# Instructor-only material: answer keys, solutions, notes. Never committed.
+.profzone/
+.claude.md

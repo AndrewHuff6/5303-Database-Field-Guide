@@ -2,7 +2,7 @@
 
 > **Fixed question:** What problem was this built for, and what does it give up?
 >
-> **Student artifact:** One paragraph + this engine's column of the [concept map](../../../concept_map.md)
+> **Student artifact:** One paragraph + this engine's column of the [concept map](../../../reference/concept_map.md)
 
 > **Comparison layout:** one `##` section per engine — PostGIS · MongoDB (2dsphere) · DuckDB (spatial)
 

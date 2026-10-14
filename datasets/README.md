@@ -6,6 +6,4 @@ Shared by more than one unit or track. Reference these; don't copy them.
 | -------------------------- | ------------------------------------------- |
 | [store/](store/)           | Every engine unit — the course-wide dataset |
 | [armageddon/](armageddon/) | Spatial track                               |
-| [people_products/](people_products/) | Source for the `store` generator; future `store` dataset |
-
-_Status: stub — content to be added._
+| [people_products/](people_products/) | SQLite 04_model Part B (normalization exercise); the future `store` |

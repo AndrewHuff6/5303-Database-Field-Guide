@@ -46,7 +46,7 @@ a 404.
 
 | Field        | Meaning                                                                                    |
 | ------------ | ------------------------------------------------------------------------------------------ |
-| `engine`     | `sqlite`, `postgres`, `mongodb`, `redis`, or `duckdb`                                      |
+| `engine`     | `sqlite`, `duckdb`, `postgres`, `mongodb`, or `redis`                                      |
 | `dataset`    | `store` for now                                                                            |
 | `size`       | `10k`, `100k`, `1m`, `practice`, or `null` for `writes`                                    |
 | `variant`    | `idx`, `noidx`, or `writes`                                                                |
@@ -67,11 +67,14 @@ plan. The driver compares database work, not web-server overhead.
 
 ### Collecting the plan must not repeat or change work
 
-- Ask for the plan **without executing** the statement: `EXPLAIN QUERY PLAN`
-  in SQLite, plain `EXPLAIN` in Postgres.
-- Never use an executing form (`EXPLAIN ANALYZE`, MongoDB `executionStats`)
-  on a write, unless it runs inside a transaction that's rolled back.
-  Otherwise every request writes twice.
+- For a **read**, ask for the plan *after* the timed run, outside the timer.
+  SQLite's `EXPLAIN QUERY PLAN` doesn't execute anything. DuckDB, PostgreSQL,
+  and MongoDB use their executing forms (`EXPLAIN ANALYZE`, MongoDB
+  `executionStats`): those run the read a second time, untimed, because only
+  they show real row counts, and in DuckDB whether an index was used at all.
+- Never use an executing form on a **write**, unless it runs inside a
+  transaction that's rolled back. Otherwise every request writes twice. Use
+  plain `EXPLAIN` (or, in MongoDB, list the write's steps).
 
 ### Errors
 

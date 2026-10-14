@@ -16,6 +16,7 @@ python driver.py                       # the full run, ~20 s for SQLite
 | `--only Q08 Q11-fast`  | only these query IDs                                          |
 | `--runs 5`             | calls per (query, database); the median is kept               |
 | `--base URL`           | another API, e.g. another engine's on another port            |
+| `--out DIR`            | write `results.csv` and `results.md` here instead of `results/` |
 
 ## What it does
 

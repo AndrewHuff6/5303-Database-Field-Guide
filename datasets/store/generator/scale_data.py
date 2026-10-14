@@ -1,7 +1,7 @@
 """
 scale_data.py -- build and populate the Assignment 01 database at any size.
 
-Reuses the schema from units/01_sqlite/04_model/schema.sql, then generates
+Reuses the schema from engines/01_sqlite/04_model/schema.sql, then generates
 customers, cards, products, zipcodes, and (a lot of) purchases.
 
 Examples
@@ -29,7 +29,7 @@ from pathlib import Path
 
 DEFAULT_SCHEMA = (
     Path(__file__).resolve().parents[3]
-    / "units" / "01_sqlite" / "04_model" / "schema.sql"
+    / "engines" / "01_sqlite" / "04_model" / "schema.sql"
 )
 
 STATES = [
@@ -64,7 +64,7 @@ def _apply_schema(con: sqlite3.Connection, schema_path: Path) -> None:
     if not schema_path.exists():
         sys.exit(
             f"schema not found: {schema_path}\n"
-            "Pass --schema pointing at units/01_sqlite/04_model/schema.sql "
+            "Pass --schema pointing at engines/01_sqlite/04_model/schema.sql "
             "(or your own copy)."
         )
     con.executescript(schema_path.read_text())

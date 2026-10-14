@@ -15,6 +15,4 @@ a seeded, skewed generator at fixed sizes. Every engine loads the **same rows**.
 | `classroom/`                         | `store_flat.csv`: the 1k flat CSV for demos and the ETL lesson (one purchase per customer) |
 | [generator/](generator/README.md)    | `make_dbs.py`: builds the SQLite experiment databases       |
 | `generated/sqlite/`                  | Output of `make_dbs.py` (git-ignored)                       |
-| `loaders/`                           | One loader per engine, all reading the generator's output   |
-
-_Status: stub — content to be added._
+| `loaders/`                           | One loader per engine (planned; SQLite's is [05_load](../../engines/01_sqlite/05_load/README.md)) |

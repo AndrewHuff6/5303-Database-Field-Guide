@@ -1,7 +1,7 @@
 # Lab: The Measurement API
 
 Why we measure databases *through* an API, and how the pieces fit. Taught once,
-during the first engine unit ([SQLite](../../units/01_sqlite/)), then reused by
+during the first engine unit ([SQLite](../../engines/01_sqlite/)), then reused by
 every other unit without being taught again.
 
 ```

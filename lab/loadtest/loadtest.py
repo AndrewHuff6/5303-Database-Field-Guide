@@ -9,6 +9,9 @@ then again after each change.
     python loadtest.py --n 200 --method POST --path "/purchases?db=writes"
     python loadtest.py --n 200 --path "/stats/revenue_by_state?db=idx_100k"
 
+    # batched writes: 20 requests x 25 purchases each, one commit per request
+    python loadtest.py --n 20 --method POST --path "/purchases/fast?db=writes" --batch 25
+
     # mixed: 90% GET --path, 10% POST --write-path (scenario S4)
     python loadtest.py --n 500 --path "/customers?customer_id=7&db=writes" \
                        --write-share 0.1 --write-path "/purchases?db=writes"
@@ -38,11 +41,12 @@ SAMPLE_PURCHASE = {
 }
 
 
-async def _one(client: httpx.AsyncClient, method: str, url: str):
+async def _one(client: httpx.AsyncClient, method: str, url: str, batch: int = 0):
     t0 = time.perf_counter()
     try:
         if method == "POST":
-            r = await client.post(url, json=SAMPLE_PURCHASE)
+            body = [SAMPLE_PURCHASE] * batch if batch else SAMPLE_PURCHASE
+            r = await client.post(url, json=body)
         else:
             r = await client.get(url)
         code, body = r.status_code, r.text[:200]
@@ -68,7 +72,8 @@ async def main_async(a):
     limits = httpx.Limits(max_connections=a.n, max_keepalive_connections=a.n)
     async with httpx.AsyncClient(timeout=a.timeout, limits=limits) as client:
         t0 = time.perf_counter()
-        results = await asyncio.gather(*(_one(client, m, u) for m, u in calls))
+        results = await asyncio.gather(*(_one(client, m, u, a.batch if u == url else 0)
+                                         for m, u in calls))
         elapsed = time.perf_counter() - t0
 
     codes = collections.Counter(code for code, _, _ in results)
@@ -83,6 +88,8 @@ async def main_async(a):
     for code, count in sorted(codes.items(), key=lambda kv: str(kv[0])):
         print(f"  {code}: {count}")
     print(f"  succeeded/sec: {len(ok) / elapsed:,.1f}")
+    if a.batch:
+        print(f"  purchases written/sec: {len(ok) * a.batch / elapsed:,.1f}  ({a.batch} per request)")
     print(f"  latency ms (all requests): p50 {percentile(all_ms, 50):,.1f}  "
           f"p95 {percentile(all_ms, 95):,.1f}  p99 {percentile(all_ms, 99):,.1f}  "
           f"max {all_ms[-1]:,.1f}")
@@ -109,6 +116,8 @@ def main():
                    help="fraction of requests sent as POST --write-path (S4 mix: 0.1)")
     p.add_argument("--write-path", default="/purchases?db=writes")
     p.add_argument("--seed", type=int, default=5303, help="seed for which requests are writes")
+    p.add_argument("--batch", type=int, default=0,
+                   help="POST a JSON array of this many purchases per request (for /purchases/fast)")
     asyncio.run(main_async(p.parse_args()))
 
 

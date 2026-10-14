@@ -8,7 +8,7 @@ For each size it writes two files with identical rows:
     noidx_<size>.db   PRIMARY KEY / UNIQUE only (secondary indexes dropped)
 
 Both get the monthly_sales summary table. The SQL files come from
-units/01_sqlite/05_load/. Run from anywhere:
+engines/01_sqlite/05_load/. Run from anywhere:
 
     python make_dbs.py                  # 10k, 100k, 1m
     python make_dbs.py --sizes 10k      # just one size, for a quick test
@@ -28,7 +28,7 @@ from scale_data import build
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
-SQL = ROOT / "units" / "01_sqlite" / "05_load"
+SQL = ROOT / "engines" / "01_sqlite" / "05_load"
 # DATA_DIR overrides the default, e.g. to keep databases out of a cloud-synced folder
 DATA = Path(os.environ.get("DATA_DIR", HERE.parent / "generated" / "sqlite")).expanduser()
 

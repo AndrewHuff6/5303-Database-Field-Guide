@@ -81,3 +81,14 @@ def test_fast_twin_returns_same_rows(client, slow, fast, params):
     a = client.get(slow, params=params[0] | DB).json()["rows"]
     b = client.get(fast, params=params[1] | DB).json()["rows"]
     assert a == b
+
+
+def test_q15_fast_writes_a_batch_in_one_request(client):
+    one = {"customer_id": 1, "card_id": 1, "product_id": 1, "department": "Games",
+           "amount": 9.99, "purchase_date": "2026-01-15"}
+    r = client.post("/purchases/fast", params=DB, json=[one] * 5)
+    assert r.status_code == 201, r.text
+    body = r.json()
+    assert body["query_id"] == "Q15-fast" and body["row_count"] == 5
+    ids = [row["purchase_id"] for row in body["rows"]]
+    assert len(set(ids)) == 5

@@ -5,7 +5,7 @@ Two jobs:
 1. ``get_exp_db``: a FastAPI dependency that reads ``?db=`` (e.g. ``noidx_1m``),
    opens that database file, and hands the route an ``ExpDB``.
 2. ``run_query`` / ``run_write``: load a query's SQL from
-   ``units/01_sqlite/06_queries/``, run it, time it, collect its plan, and
+   ``engines/01_sqlite/06_queries/``, run it, time it, collect its plan, and
    return the result envelope from the route contract:
 
     {"engine": "sqlite", "dataset": "store", "size": "1m", "variant": "idx",
@@ -34,9 +34,10 @@ from typing import Any, Iterator
 
 from fastapi import HTTPException, Query
 
-ROOT = Path(__file__).resolve().parents[4]
+# FIELD_GUIDE: where the field-guide clone is, if this folder was copied out of it
+ROOT = Path(os.environ.get("FIELD_GUIDE", Path(__file__).resolve().parents[4])).expanduser()
 DATA_DIR = Path(os.environ.get("DATA_DIR", ROOT / "datasets" / "store" / "generated" / "sqlite"))
-SQL_DIR = ROOT / "units" / "01_sqlite" / "06_queries"
+SQL_DIR = ROOT / "engines" / "01_sqlite" / "06_queries"
 
 # 08_concurrency sets this to 0 to watch "database is locked" happen.
 BUSY_TIMEOUT_MS = int(os.environ.get("BUSY_TIMEOUT_MS", "5000"))
@@ -121,6 +122,25 @@ def run_query(db: ExpDB, query_id: str, params: dict[str, Any] | None = None) ->
         plan = [r["detail"] for r in db.con.execute("EXPLAIN QUERY PLAN " + sql, params)]
         t0 = time.perf_counter()
         rows = db.con.execute(sql, params).fetchall()
+        elapsed_ms = (time.perf_counter() - t0) * 1000
+    except sqlite3.Error as exc:
+        raise HTTPException(503, f"database error: {exc}") from exc
+    return _envelope(db, query_id, elapsed_ms, plan, rows)
+
+
+def run_write_many(db: ExpDB, query_id: str, rows_params: list[dict[str, Any]]) -> dict:
+    """Run one INSERT ... RETURNING per item, all inside ONE transaction.
+
+    Every row is written, then a single commit makes them durable together.
+    elapsed_ms covers the whole batch, commit included.
+    """
+    sql = load_sql(query_id)
+    params = [_clean(p) for p in rows_params]
+    try:
+        plan = [r["detail"] for r in db.con.execute("EXPLAIN QUERY PLAN " + sql, params[0])] if params else []
+        t0 = time.perf_counter()
+        with db.con:  # one transaction: commits once on success, rolls back on error
+            rows = [r for p in params for r in db.con.execute(sql, p).fetchall()]
         elapsed_ms = (time.perf_counter() - t0) * 1000
     except sqlite3.Error as exc:
         raise HTTPException(503, f"database error: {exc}") from exc

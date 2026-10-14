@@ -22,18 +22,18 @@ folder. Only the Python standard library is used.
 
 | File                | What it does                                                                                   |
 | ------------------- | ---------------------------------------------------------------------------------------------- |
-| `scale_data.py`     | Builds one database at any size, using [schema.sql](../../../units/01_sqlite/04_model/schema.sql) |
+| `scale_data.py`     | Builds one database at any size, using [schema.sql](../../../engines/01_sqlite/04_model/schema.sql) |
 | `make_dbs.py`       | Calls `scale_data.py` for each size, then makes the `idx_` / `noidx_` pair                     |
 
 For each size, both files hold **identical rows**:
 
 | File              | Indexes                                                                                                  |
 | ----------------- | -------------------------------------------------------------------------------------------------------- |
-| `idx_<size>.db`   | foreign-key indexes from the schema + [covering_indexes.sql](../../../units/01_sqlite/05_load/covering_indexes.sql) |
-| `noidx_<size>.db` | only `PRIMARY KEY` / `UNIQUE`; [drop_indexes.sql](../../../units/01_sqlite/05_load/drop_indexes.sql) removes the rest |
+| `idx_<size>.db`   | foreign-key indexes from the schema + [covering_indexes.sql](../../../engines/01_sqlite/05_load/covering_indexes.sql) |
+| `noidx_<size>.db` | only `PRIMARY KEY` / `UNIQUE`; [drop_indexes.sql](../../../engines/01_sqlite/05_load/drop_indexes.sql) removes the rest |
 
 Both also get the `monthly_sales` rollup from
-[summary_tables.sql](../../../units/01_sqlite/05_load/summary_tables.sql).
+[summary_tables.sql](../../../engines/01_sqlite/05_load/summary_tables.sql).
 
 | Size   | Purchases | Customers | Cards (≈) | Products |
 | ------ | --------- | --------- | --------- | -------- |
