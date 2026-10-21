@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>02b – Dropdowns and validation</title>
+</head>
+<body>
+<main>
+    <h1>Purchase form</h1>
+
+    <form action="" method="get">
+
+        <label for="customer">Customer</label>
+        <!-- required: the browser won't submit while this is still on the empty option. -->
+        <select id="customer" name="customer_id" required>
+            <!-- value="" counts as "nothing chosen" for required. -->
+            <option value="">Choose a customer</option>
+            <!-- The text between the tags is what people SEE. value is what gets SENT. -->
+            <option value="1">Margaret Stroustrup</option>
+            <option value="2">Tim Ritchie</option>
+            <option value="3">Frances Berners</option>
+            <option value="4">Anita Perlman</option>
+            <option value="5">Alan Allen</option>
+        </select>
+
+        <label for="product">Product</label>
+        <select id="product" name="product_id" required>
+            <option value="">Choose a product</option>
+            <option value="1">Wireless Keyboard 0 – $202.11</option>
+            <option value="2">Portable Blender 1 – $259.06</option>
+            <option value="3">Adjustable Monitor 2 – $398.52</option>
+            <option value="5">Foldable Lamp 4 – $254.51</option>
+        </select>
+
+        <label for="quantity">Quantity</label>
+        <!-- min/max/step limit what the browser accepts. Try typing 0 or 2.5 and submitting. -->
+        <input type="number" id="quantity" name="quantity" value="1" min="1" max="10" step="1" required>
+
+        <label for="email">Receipt email (optional)</label>
+        <!-- type="email" makes the browser check for something@something. -->
+        <input type="email" id="email" name="email" placeholder="you@example.com">
+
+        <button type="submit">Submit</button>
+    </form>
+</main>
+</body>
+</html>

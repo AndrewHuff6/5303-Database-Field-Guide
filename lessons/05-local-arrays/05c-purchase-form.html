@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>05c – Purchase form from local arrays</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">Purchase form</h1>
+
+    <form x-data="purchaseForm()" @submit.prevent="preview()"
+          class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+
+        <div>
+            <label for="customer" class="block font-medium mb-1">Customer</label>
+            <select id="customer" x-model.number="customerId" required
+                    class="w-full border border-gray-300 rounded px-3 py-2">
+                <option value="">Choose a customer</option>
+                <template x-for="customer in customers" :key="customer.id">
+                    <option :value="customer.id" x-text="customer.name"></option>
+                </template>
+            </select>
+        </div>
+
+        <div>
+            <label for="product" class="block font-medium mb-1">Product</label>
+            <select id="product" x-model.number="productId" required
+                    class="w-full border border-gray-300 rounded px-3 py-2">
+                <option value="">Choose a product</option>
+                <template x-for="product in products" :key="product.id">
+                    <option :value="product.id" x-text="`${product.name} – $${product.price}`"></option>
+                </template>
+            </select>
+        </div>
+
+        <div>
+            <label for="quantity" class="block font-medium mb-1">Quantity</label>
+            <input id="quantity" type="number" min="1" max="10" required x-model.number="quantity"
+                   class="w-32 border border-gray-300 rounded px-3 py-2">
+        </div>
+
+        <p x-show="product">
+            Estimated total: <strong>$<span x-text="(totalCents / 100).toFixed(2)"></span></strong>
+        </p>
+
+        <div class="flex gap-2">
+            <!--
+                :disabled is bound: the button is disabled while canSubmit is false.
+                disabled:opacity-50 and disabled:cursor-not-allowed are Tailwind styles for that state.
+            -->
+            <button type="submit" :disabled="!canSubmit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed">
+                Preview purchase
+            </button>
+            <button type="button" @click="reset()" class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded">
+                Reset
+            </button>
+        </div>
+
+        <p x-show="message" x-text="message"
+           class="bg-green-50 border border-green-200 text-green-800 rounded p-3"></p>
+    </form>
+</main>
+
+<script>
+    // Prices arrive as strings like "202.11" (lesson 01 explains why).
+    // Converting to whole cents makes the arithmetic exact.
+    function toCents(price) {
+        return Math.round(Number(price) * 100);
+    }
+
+    function purchaseForm() {
+        return {
+            customerId: '',
+            productId: '',
+            quantity: 1,
+            message: '',
+
+            customers: [
+                { id: 1, name: 'Margaret Stroustrup' },
+                { id: 2, name: 'Tim Ritchie' },
+                { id: 3, name: 'Frances Berners' },
+                { id: 4, name: 'Anita Perlman' },
+                { id: 5, name: 'Alan Allen' },
+                { id: 6, name: 'Grace Knuth' },
+                { id: 7, name: 'Katherine Johnson' },
+                { id: 8, name: 'Alan Ritchie' },
+            ],
+            products: [
+                { id: 1, name: 'Wireless Keyboard 0',  price: '202.11' },
+                { id: 2, name: 'Portable Blender 1',   price: '259.06' },
+                { id: 3, name: 'Adjustable Monitor 2', price: '398.52' },
+                { id: 4, name: 'Adjustable Skillet 3', price: '322.00' },
+                { id: 5, name: 'Foldable Lamp 4',      price: '254.51' },
+                { id: 6, name: 'Stainless Lamp 5',     price: '264.04' },
+                { id: 7, name: 'Foldable Toolkit 6',   price: '218.36' },
+                { id: 8, name: 'Classic Kettle 7',     price: '256.65' },
+            ],
+
+            get customer() {
+                return this.customers.find(c => c.id === this.customerId);
+            },
+            get product() {
+                return this.products.find(p => p.id === this.productId);
+            },
+            get totalCents() {
+                return this.product ? toCents(this.product.price) * this.quantity : 0;
+            },
+            get canSubmit() {
+                return this.customer && this.product && this.quantity >= 1;
+            },
+
+            preview() {
+                const total = (this.totalCents / 100).toFixed(2);
+                this.message = `${this.customer.name}: ${this.quantity} × ${this.product.name} = $${total}`;
+            },
+            reset() {
+                this.customerId = '';
+                this.productId = '';
+                this.quantity = 1;
+                this.message = '';
+            },
+        };
+    }
+</script>
+</body>
+</html>

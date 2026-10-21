@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>11b – Searching on the server</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-xl mx-auto p-6 space-y-4" x-data="productSearch()">
+    <h1 class="text-2xl font-bold">Product search</h1>
+
+    <form @submit.prevent="searchProducts()"
+          class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+        <div class="flex gap-2">
+            <input type="search" x-model="query" placeholder="e.g. lamp, kettle, key"
+                   class="flex-1 border border-gray-300 rounded px-3 py-2">
+            <button type="submit" :disabled="loading"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded disabled:opacity-50">
+                Search
+            </button>
+        </div>
+        <label class="flex items-center gap-2 text-sm">
+            Show at most
+            <select x-model.number="limit" class="border border-gray-300 rounded px-2 py-1">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+            </select>
+            results
+        </label>
+        <!-- The exact URL the page requested, so you can see the query parameters. -->
+        <p x-show="lastUrl" class="text-sm text-gray-500">Requested: <code x-text="lastUrl"></code></p>
+    </form>
+
+    <section class="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
+        <p x-show="loading" class="text-gray-500">Searching…</p>
+        <p x-show="error" x-text="error" class="text-red-700"></p>
+        <p x-show="searched === null && !loading" class="italic text-gray-500">Type a word and press Search.</p>
+        <p x-show="searched !== null && !loading && results.length === 0" class="text-gray-500">
+            No products match “<span x-text="searched"></span>”.
+        </p>
+
+        <ul class="divide-y divide-gray-100">
+            <template x-for="product in results" :key="product.id">
+                <li class="py-2 flex items-center justify-between gap-4">
+                    <span>
+                        <span x-text="product.name"></span>
+                        <span class="text-gray-500" x-text="`$${product.price}`"></span>
+                    </span>
+                    <!-- :class adds classes when the expression is true: highlight the selected one -->
+                    <button type="button" @click="selectProduct(product.id)"
+                            class="text-sm px-3 py-1 rounded border border-gray-300 hover:bg-gray-100"
+                            :class="selected?.id === product.id && 'bg-blue-600 text-white border-blue-600 hover:bg-blue-700'">
+                        <span x-text="selected?.id === product.id ? 'Selected' : 'Select'"></span>
+                    </button>
+                </li>
+            </template>
+        </ul>
+    </section>
+
+    <!-- The selected product, loaded with the lesson 08 route -->
+    <template x-if="selected">
+        <section class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <p class="font-semibold" x-text="selected.name"></p>
+            <p>$<span x-text="selected.price"></span> · bought <span x-text="selected.times_purchased"></span> times</p>
+        </section>
+    </template>
+</main>
+
+<script>
+    async function getJSON(url) {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(typeof data.detail === 'string' ? data.detail : `The server answered ${response.status}`);
+        }
+        return data;
+    }
+
+    function productSearch() {
+        return {
+            query: '',
+            limit: 10,
+            searched: null,
+            results: [],
+            loading: false,
+            error: '',
+            lastUrl: '',
+            selected: null,
+
+            async searchProducts() {
+                const term = this.query.trim();
+                this.error = '';
+                if (term === '') {
+                    this.searched = null;
+                    this.results = [];
+                    return;
+                }
+
+                // URLSearchParams builds "q=...&limit=..." and escapes special characters,
+                // so a search for "a&b" can't break the URL.
+                const params = new URLSearchParams({ q: term, limit: this.limit });
+                this.lastUrl = `/api/products?${params}`;
+
+                this.loading = true;
+                try {
+                    this.results = await getJSON(this.lastUrl);
+                    this.searched = term;
+                } catch (err) {
+                    this.results = [];
+                    this.error = `Search failed: ${err.message}`;
+                } finally {
+                    this.loading = false;
+                }
+            },
+
+            async selectProduct(id) {
+                this.selected = await getJSON(`/api/products/${id}`);
+            },
+        };
+    }
+</script>
+</body>
+</html>

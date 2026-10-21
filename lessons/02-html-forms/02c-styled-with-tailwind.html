@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>02c – Styled with Tailwind</title>
+    <!--
+        Tailwind CSS. This script reads the class="..." attributes on the page and
+        generates the CSS for them. Delete this line and the form still works; it just looks plain.
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<!-- max-w-xl: at most ~36rem wide · mx-auto: center it · p-6: padding on all sides -->
+<main class="max-w-xl mx-auto p-6">
+    <!-- text-2xl: bigger text · font-bold · mb-4: margin below -->
+    <h1 class="text-2xl font-bold mb-4">Purchase form</h1>
+
+    <!-- A "card": white box, border, rounded corners, small shadow, padding, space between children -->
+    <form action="" method="get" class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+
+        <div>
+            <!-- block: own line · font-medium: semi-bold · mb-1: small gap before the input -->
+            <label for="customer" class="block font-medium mb-1">Customer</label>
+            <!--
+                w-full: full width · border + border-gray-300: grey outline · rounded · px-3 py-2: inner padding
+                user-invalid:border-red-500: red border, but only after the user has tried and got it wrong
+            -->
+            <select id="customer" name="customer_id" required
+                    class="w-full border border-gray-300 rounded px-3 py-2 user-invalid:border-red-500">
+                <option value="">Choose a customer</option>
+                <option value="1">Margaret Stroustrup</option>
+                <option value="2">Tim Ritchie</option>
+                <option value="3">Frances Berners</option>
+                <option value="4">Anita Perlman</option>
+                <option value="5">Alan Allen</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="product" class="block font-medium mb-1">Product</label>
+            <select id="product" name="product_id" required
+                    class="w-full border border-gray-300 rounded px-3 py-2 user-invalid:border-red-500">
+                <option value="">Choose a product</option>
+                <option value="1">Wireless Keyboard 0 – $202.11</option>
+                <option value="2">Portable Blender 1 – $259.06</option>
+                <option value="3">Adjustable Monitor 2 – $398.52</option>
+                <option value="5">Foldable Lamp 4 – $254.51</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="quantity" class="block font-medium mb-1">Quantity</label>
+            <!-- w-32: a fixed, narrower width -->
+            <input type="number" id="quantity" name="quantity" value="1" min="1" max="10" step="1" required
+                   class="w-32 border border-gray-300 rounded px-3 py-2 user-invalid:border-red-500">
+        </div>
+
+        <div>
+            <label for="email" class="block font-medium mb-1">Receipt email (optional)</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com"
+                   class="w-full border border-gray-300 rounded px-3 py-2 user-invalid:border-red-500">
+        </div>
+
+        <!-- hover:bg-blue-700: darker blue while the mouse is over it -->
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded">
+            Submit
+        </button>
+    </form>
+</main>
+</body>
+</html>

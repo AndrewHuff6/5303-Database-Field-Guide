@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>03b – x-model</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">x-model: inputs that update state</h1>
+
+    <article x-data="{ quantity: 1, priceCents: 20211, note: '', textQuantity: 1 }"
+             class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+
+        <!--
+            x-model links the input and the variable BOTH ways:
+              typing in the box changes quantity, and changing quantity changes the box.
+            .number converts what was typed ("3", a string) into a number (3).
+        -->
+        <label class="block">
+            <span class="block font-medium mb-1">Quantity</span>
+            <input type="number" min="1" x-model.number="quantity"
+                   class="w-32 border border-gray-300 rounded px-3 py-2">
+        </label>
+        <p>Total: $<span x-text="(quantity * priceCents / 100).toFixed(2)"></span></p>
+
+        <!-- Text inputs work the same way. -->
+        <label class="block">
+            <span class="block font-medium mb-1">Gift note</span>
+            <input type="text" x-model="note" placeholder="Type something"
+                   class="w-full border border-gray-300 rounded px-3 py-2">
+        </label>
+        <p>Your note: <em x-text="note"></em> (<span x-text="note.length"></span> characters)</p>
+
+        <hr class="border-gray-200">
+
+        <!-- Why .number matters: without it, the value is a STRING. -->
+        <label class="block">
+            <span class="block font-medium mb-1">Quantity WITHOUT .number</span>
+            <input type="number" x-model="textQuantity"
+                   class="w-32 border border-gray-300 rounded px-3 py-2">
+        </label>
+        <p>
+            textQuantity + 1 = <strong x-text="textQuantity + 1"></strong>
+            <span class="text-sm text-gray-600">(type 3 and you get "31", because "3" + 1 joins text)</span>
+        </p>
+        <p>typeof textQuantity: <code class="bg-gray-100 px-1 rounded" x-text="typeof textQuantity"></code></p>
+    </article>
+</main>
+</body>
+</html>

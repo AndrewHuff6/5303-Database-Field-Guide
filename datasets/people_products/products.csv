@@ -1,4 +1,4 @@
-id,name,category,sub_category,description,price,inventory
+_id,name,category,sub_category,description,price,inventory
 1,Vintage Button-Down Shirt,Clothing - Shirts,Casual Shirts,A retro-style button-down shirt with a relaxed fit.,45.99,64
 2,Sour Cream,Food - Dairy,Dairy Spreads,"Tangy sour cream, perfect for dips and toppings.",3.49,78
 3,Lemon Basil Pasta Sauce,Food - Sauces,Pasta Sauces,A tangy sauce that combines lemon zest and basil for a refreshing flavor.,4.99,38

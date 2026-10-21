@@ -1,0 +1,52 @@
+[
+  {
+    "customer_id": 226,
+    "card_id": 327,
+    "product_id": 26,
+    "department": "Home",
+    "amount": "162.33",
+    "product_name": "Ceramic Speaker 25",
+    "state_code": "WY",
+    "card_type": "china-unionpay"
+  },
+  {
+    "customer_id": 71,
+    "card_id": 104,
+    "product_id": 49,
+    "department": "Electronics",
+    "amount": "202.24",
+    "product_name": "Classic Heater 48",
+    "state_code": "NY",
+    "card_type": "mastercard"
+  },
+  {
+    "customer_id": 292,
+    "card_id": 425,
+    "product_id": 1,
+    "department": "Health",
+    "amount": "202.11",
+    "product_name": "Wireless Keyboard 0",
+    "state_code": "CO",
+    "card_type": "switch"
+  },
+  {
+    "customer_id": 372,
+    "card_id": 543,
+    "product_id": 86,
+    "department": "Toys",
+    "amount": "103.54",
+    "product_name": "Bamboo Speaker 85",
+    "state_code": "AL",
+    "card_type": "mastercard"
+  },
+  {
+    "customer_id": 233,
+    "card_id": 337,
+    "product_id": 22,
+    "department": "Games",
+    "amount": "120.92",
+    "product_name": "Compact Speaker 21",
+    "state_code": "CA",
+    "card_type": "solo"
+  }
+]

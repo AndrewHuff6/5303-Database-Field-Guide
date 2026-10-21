@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>05a – x-for</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">x-for: one element per array item</h1>
+
+    <article x-data="{
+        products: [
+            { id: 1, name: 'Wireless Keyboard 0',  price: '202.11' },
+            { id: 2, name: 'Portable Blender 1',   price: '259.06' },
+            { id: 3, name: 'Adjustable Monitor 2', price: '398.52' },
+            { id: 4, name: 'Adjustable Skillet 3', price: '322.00' },
+            { id: 5, name: 'Foldable Lamp 4',      price: '254.51' }
+        ]
+    }" class="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
+
+        <!-- products.length is how many items the array has -->
+        <p class="mb-2"><span x-text="products.length"></span> products</p>
+
+        <ul class="list-disc pl-6 space-y-1">
+            <!--
+                x-for must be on a <template>. Alpine copies the template's ONE child element
+                once per item. Inside the copy, "product" is the current item.
+                :key gives each copy a stable identity (use the id, never the position).
+            -->
+            <template x-for="product in products" :key="product.id">
+                <li>
+                    <span x-text="product.name"></span>
+                    – $<span x-text="product.price"></span>
+                </li>
+            </template>
+        </ul>
+
+        <!-- Changing the array changes the list. -->
+        <button type="button"
+                @click="products.push({ id: 6, name: 'Stainless Lamp 5', price: '264.04' })"
+                class="mt-4 bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">
+            Add Stainless Lamp 5
+        </button>
+        <button type="button" @click="products.pop()"
+                class="mt-4 bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">
+            Remove last
+        </button>
+    </article>
+</main>
+</body>
+</html>

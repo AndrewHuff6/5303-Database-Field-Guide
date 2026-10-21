@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>04b – @input, @change and $event</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">@input, @change and $event</h1>
+
+    <article x-data="{ log: [], typed: '' }"
+             class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+
+        <!--
+            @input fires on EVERY keystroke.
+            $event is the browser's event object. $event.target is the element that fired it,
+            so $event.target.value is what's currently in the box.
+        -->
+        <label class="block">
+            <span class="block font-medium mb-1">Search (fires @input)</span>
+            <input type="text" @input="typed = $event.target.value; log.unshift('input: ' + typed)"
+                   class="w-full border border-gray-300 rounded px-3 py-2">
+        </label>
+
+        <!-- @change on a select fires once, when a different option is chosen. -->
+        <label class="block">
+            <span class="block font-medium mb-1">Customer (fires @change)</span>
+            <select @change="log.unshift('change: customer ' + $event.target.value)"
+                    class="w-full border border-gray-300 rounded px-3 py-2">
+                <option value="">Choose a customer</option>
+                <option value="1">Margaret Stroustrup</option>
+                <option value="2">Tim Ritchie</option>
+                <option value="3">Frances Berners</option>
+            </select>
+        </label>
+
+        <!-- @change on a text input fires only when you leave the box after changing it. -->
+        <label class="block">
+            <span class="block font-medium mb-1">Note (fires @change when you click away)</span>
+            <input type="text" @change="log.unshift('change: note ' + $event.target.value)"
+                   class="w-full border border-gray-300 rounded px-3 py-2">
+        </label>
+
+        <div class="flex items-center justify-between">
+            <h3 class="font-semibold">Event log (newest first)</h3>
+            <button type="button" @click="log = []" class="text-sm text-blue-600 hover:underline">Clear</button>
+        </div>
+        <!-- x-text with .join('\n') plus whitespace-pre-line shows one entry per line. -->
+        <pre class="bg-gray-100 rounded p-3 text-sm h-48 overflow-auto whitespace-pre-line"
+             x-text="log.join('\n')"></pre>
+    </article>
+</main>
+</body>
+</html>

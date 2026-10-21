@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>10 – Record a purchase</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-2xl mx-auto p-6 space-y-6" x-data="purchaseForm()" x-init="loadOptions()">
+    <h1 class="text-2xl font-bold">Purchase form</h1>
+
+    <p x-show="loading" class="text-gray-500">Loading customers and products…</p>
+    <p x-show="error" x-text="error" class="bg-red-50 border border-red-200 text-red-700 rounded p-3"></p>
+
+    <form @submit.prevent="placePurchase()"
+          class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+
+        <div>
+            <label for="customer" class="block font-medium mb-1">Customer</label>
+            <!-- CHANGED: now loads the customer's cards as well as their history -->
+            <select id="customer" x-model.number="customerId" @change="loadCustomer()" required
+                    :disabled="loading || customerLoading"
+                    class="w-full border border-gray-300 rounded px-3 py-2 disabled:bg-gray-100">
+                <option value="">Choose a customer</option>
+                <template x-for="customer in customers" :key="customer.id">
+                    <option :value="customer.id" x-text="customer.name"></option>
+                </template>
+            </select>
+        </div>
+
+        <!-- NEW: card dropdown, filled from GET /api/customers/{id} -->
+        <div>
+            <label for="card" class="block font-medium mb-1">Card</label>
+            <select id="card" x-model.number="cardId" required :disabled="!customer"
+                    class="w-full border border-gray-300 rounded px-3 py-2 disabled:bg-gray-100">
+                <option value="" x-text="customer ? 'Choose a card' : 'Choose a customer first'"></option>
+                <template x-for="card in customer?.cards ?? []" :key="card.card_id">
+                    <option :value="card.card_id" x-text="`${card.card_type} ending ${card.last4}`"></option>
+                </template>
+            </select>
+        </div>
+
+        <div>
+            <label for="product" class="block font-medium mb-1">Product</label>
+            <select id="product" x-model.number="productId" @change="loadProduct()" required
+                    :disabled="loading || productLoading"
+                    class="w-full border border-gray-300 rounded px-3 py-2 disabled:bg-gray-100">
+                <option value="">Choose a product</option>
+                <template x-for="product in products" :key="product.id">
+                    <option :value="product.id" x-text="product.name"></option>
+                </template>
+            </select>
+        </div>
+
+        <div class="bg-gray-50 rounded p-4 min-h-16">
+            <p x-show="!productId" class="italic text-gray-500">Choose a product to see its details.</p>
+            <p x-show="productLoading" class="text-gray-500">Loading product…</p>
+            <p x-show="productError" x-text="productError" class="text-red-700"></p>
+            <template x-if="product">
+                <div>
+                    <p class="font-semibold" x-text="product.name"></p>
+                    <p>$<span x-text="product.price"></span> each ·
+                       bought <span x-text="product.times_purchased"></span> times</p>
+                </div>
+            </template>
+        </div>
+
+        <div>
+            <label for="quantity" class="block font-medium mb-1">Quantity</label>
+            <input id="quantity" type="number" min="1" max="10" required x-model.number="quantity"
+                   class="w-32 border border-gray-300 rounded px-3 py-2">
+        </div>
+
+        <p x-show="product">
+            Estimated total: <strong>$<span x-text="(totalCents / 100).toFixed(2)"></span></strong>
+            <span class="text-sm text-gray-500">(the server calculates the real one)</span>
+        </p>
+
+        <div class="flex gap-2">
+            <!-- CHANGED: submitting now really records the purchase -->
+            <button type="submit" :disabled="!canSubmit || submitting"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed">
+                <span x-text="submitting ? 'Placing purchase…' : 'Place purchase'"></span>
+            </button>
+            <button type="button" @click="reset()" class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded">
+                Reset
+            </button>
+        </div>
+
+        <p x-show="submitError" x-text="submitError"
+           class="bg-red-50 border border-red-200 text-red-700 rounded p-3"></p>
+
+        <!-- NEW: confirmation built from the server's answer, not from the form -->
+        <template x-if="receipt">
+            <div class="bg-green-50 border border-green-200 text-green-800 rounded p-4">
+                <p class="font-semibold">Purchase recorded</p>
+                <p>
+                    <span x-text="receipt.customer_name"></span> bought
+                    <span x-text="receipt.quantity"></span> × <span x-text="receipt.product_name"></span>
+                    at $<span x-text="receipt.unit_price"></span> =
+                    <strong>$<span x-text="receipt.total"></span></strong>
+                </p>
+                <p class="text-sm">Purchase IDs: <span x-text="receipt.purchase_ids.join(', ')"></span></p>
+            </div>
+        </template>
+    </form>
+
+    <section class="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
+        <h2 class="text-lg font-semibold mb-2">Recent purchases</h2>
+
+        <p x-show="!customerId" class="italic text-gray-500">Choose a customer to see their history.</p>
+        <p x-show="customerLoading" class="text-gray-500">Loading history…</p>
+        <p x-show="customerError" x-text="customerError" class="text-red-700"></p>
+        <p x-show="history !== null && history.length === 0" class="text-gray-500">No purchases yet.</p>
+
+        <table x-show="history && history.length > 0" class="w-full text-left text-sm">
+            <thead class="border-b border-gray-200">
+                <tr><th class="py-2">Date</th><th>Product</th><th>Department</th><th class="text-right">Amount</th></tr>
+            </thead>
+            <tbody>
+                <template x-for="purchase in history ?? []" :key="purchase.id">
+                    <tr class="border-b border-gray-100">
+                        <td class="py-2" x-text="purchase.purchase_date"></td>
+                        <td x-text="purchase.product_name"></td>
+                        <td x-text="purchase.department"></td>
+                        <td class="text-right" x-text="`$${purchase.amount}`"></td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<script>
+    function toCents(price) {
+        return Math.round(Number(price) * 100);
+    }
+
+    // From lesson 09: turn FastAPI's error "detail" into readable messages.
+    function errorMessages(data, status) {
+        if (typeof data?.detail === 'string') return [data.detail];
+        if (Array.isArray(data?.detail)) return data.detail.map(e => `${e.loc.at(-1)}: ${e.msg}`);
+        return [`The server answered ${status}`];
+    }
+
+    async function getJSON(url) {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (!response.ok) throw new Error(errorMessages(data, response.status).join('; '));
+        return data;
+    }
+
+    async function postJSON(url, body) {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(errorMessages(data, response.status).join('; '));
+        return data;
+    }
+
+    function purchaseForm() {
+        return {
+            customerId: '',
+            cardId: '',
+            productId: '',
+            quantity: 1,
+            loading: false,
+            error: '',
+            customers: [],
+            products: [],
+
+            product: null,
+            productLoading: false,
+            productError: '',
+
+            // NEW: the selected customer's details (with cards) and history
+            customer: null,
+            history: null,
+            customerLoading: false,
+            customerError: '',
+
+            // NEW: submitting
+            submitting: false,
+            submitError: '',
+            receipt: null,
+
+            async loadOptions() {
+                this.loading = true;
+                this.error = '';
+                try {
+                    this.customers = await getJSON('/api/customers');
+                    this.products = await getJSON('/api/products');
+                } catch (err) {
+                    this.error = `Could not load the form: ${err.message}`;
+                } finally {
+                    this.loading = false;
+                }
+            },
+
+            async loadProduct() {
+                this.product = null;
+                this.productError = '';
+                if (!this.productId) return;
+
+                this.productLoading = true;
+                try {
+                    this.product = await getJSON(`/api/products/${this.productId}`);
+                } catch (err) {
+                    this.productError = `Could not load product: ${err.message}`;
+                } finally {
+                    this.productLoading = false;
+                }
+            },
+
+            // CHANGED (was loadHistory): two requests for one selection
+            async loadCustomer() {
+                this.customer = null;
+                this.cardId = '';  // a card from the previous customer must not stay selected
+                this.history = null;
+                this.customerError = '';
+                if (!this.customerId) return;
+
+                this.customerLoading = true;
+                try {
+                    this.customer = await getJSON(`/api/customers/${this.customerId}`);
+                    this.history = await getJSON(`/api/customers/${this.customerId}/purchases`);
+                } catch (err) {
+                    this.customerError = `Could not load customer: ${err.message}`;
+                } finally {
+                    this.customerLoading = false;
+                }
+            },
+
+            get totalCents() {
+                return this.product ? toCents(this.product.price) * this.quantity : 0;
+            },
+            get canSubmit() {
+                return this.customer && this.cardId && this.product && this.quantity >= 1;
+            },
+
+            // NEW
+            async placePurchase() {
+                this.submitting = true;
+                this.submitError = '';
+                this.receipt = null;
+                try {
+                    // Only the user's choices. The server looks up everything else.
+                    this.receipt = await postJSON('/api/purchases', {
+                        customer_id: this.customerId,
+                        card_id: this.cardId,
+                        product_id: this.productId,
+                        quantity: this.quantity,
+                    });
+
+                    // Refresh what the purchase changed: history and the product's purchase count.
+                    this.history = await getJSON(`/api/customers/${this.customerId}/purchases`);
+                    this.product = await getJSON(`/api/products/${this.productId}`);
+                } catch (err) {
+                    this.submitError = `Purchase failed: ${err.message}`;
+                } finally {
+                    this.submitting = false;
+                }
+            },
+
+            reset() {
+                this.customerId = '';
+                this.cardId = '';
+                this.productId = '';
+                this.quantity = 1;
+                this.product = null;
+                this.productError = '';
+                this.customer = null;
+                this.history = null;
+                this.customerError = '';
+                this.submitError = '';
+                this.receipt = null;
+            },
+        };
+    }
+</script>
+</body>
+</html>

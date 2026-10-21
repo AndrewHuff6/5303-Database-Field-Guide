@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>04a – @click</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <main class="max-w-xl mx-auto p-6">
+      <h1 class="text-2xl font-bold mb-4">
+        @click: run code when a button is pressed
+      </h1>
+
+      <article
+        x-data="{ quantity: 1, priceCents: 20211 }"
+        class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4"
+      >
+        <p>Wireless Keyboard 0 · $202.11 each</p>
+
+        <!-- flex items-center gap-2: put the children in a row, vertically centered, with gaps -->
+        <div class="flex items-center gap-2">
+          <!--
+                @click="..." runs the JavaScript statement when the button is clicked.
+                type="button" stops the button from trying to submit a form.
+            -->
+          <button
+            type="button"
+            @click="quantity = Math.max(1, quantity - 1)"
+            class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded"
+          >
+            −
+          </button>
+          <span class="w-8 text-center font-bold" x-text="quantity"></span>
+
+          <!-- quantity++ is short for quantity = quantity + 1 -->
+          <button
+            type="button"
+            @click="quantity++"
+            class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded"
+          >
+            +
+          </button>
+
+          <button
+            type="button"
+            @click="quantity = 1"
+            class="ml-4 text-sm text-blue-600 hover:underline"
+          >
+            Reset
+          </button>
+        </div>
+
+        <p>
+          Total: $<span
+            x-text="(quantity * priceCents / 100).toFixed(2)"
+          ></span>
+        </p>
+
+        <p class="text-sm text-gray-600">
+          Bug to fix: the − button can go below 1. Change its @click to
+          <code>quantity = Math.max(1, quantity - 1)</code>.
+        </p>
+      </article>
+    </main>
+  </body>
+</html>

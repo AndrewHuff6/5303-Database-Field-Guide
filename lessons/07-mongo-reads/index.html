@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>07 – Purchase form from MongoDB</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">Purchase form</h1>
+
+    <!--
+        x-init runs once, as soon as Alpine sets up the component.
+        Here it starts loading both dropdowns without anyone pressing a button.
+    -->
+    <form x-data="purchaseForm()" x-init="loadOptions()" @submit.prevent="preview()"
+          class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+
+        <p x-show="loading" class="text-gray-500">Loading customers and products…</p>
+        <p x-show="error" x-text="error" class="bg-red-50 border border-red-200 text-red-700 rounded p-3"></p>
+
+        <div>
+            <label for="customer" class="block font-medium mb-1">Customer</label>
+            <select id="customer" x-model.number="customerId" required :disabled="loading"
+                    class="w-full border border-gray-300 rounded px-3 py-2 disabled:bg-gray-100">
+                <option value="">Choose a customer</option>
+                <template x-for="customer in customers" :key="customer.id">
+                    <option :value="customer.id" x-text="customer.name"></option>
+                </template>
+            </select>
+        </div>
+
+        <div>
+            <label for="product" class="block font-medium mb-1">Product</label>
+            <select id="product" x-model.number="productId" required :disabled="loading"
+                    class="w-full border border-gray-300 rounded px-3 py-2 disabled:bg-gray-100">
+                <option value="">Choose a product</option>
+                <template x-for="product in products" :key="product.id">
+                    <option :value="product.id" x-text="`${product.name} – $${product.price}`"></option>
+                </template>
+            </select>
+        </div>
+
+        <div>
+            <label for="quantity" class="block font-medium mb-1">Quantity</label>
+            <input id="quantity" type="number" min="1" max="10" required x-model.number="quantity"
+                   class="w-32 border border-gray-300 rounded px-3 py-2">
+        </div>
+
+        <p x-show="product">
+            Estimated total: <strong>$<span x-text="(totalCents / 100).toFixed(2)"></span></strong>
+        </p>
+
+        <div class="flex gap-2">
+            <button type="submit" :disabled="!canSubmit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed">
+                Preview purchase
+            </button>
+            <button type="button" @click="reset()" class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded">
+                Reset
+            </button>
+        </div>
+
+        <p x-show="message" x-text="message"
+           class="bg-green-50 border border-green-200 text-green-800 rounded p-3"></p>
+    </form>
+</main>
+
+<script>
+    function toCents(price) {
+        return Math.round(Number(price) * 100);
+    }
+
+    // One helper for every GET request: fetch, check, parse.
+    async function getJSON(url) {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`${url} answered ${response.status}`);
+        }
+        return response.json();
+    }
+
+    function purchaseForm() {
+        return {
+            customerId: '',
+            productId: '',
+            quantity: 1,
+            message: '',
+            loading: false,
+            error: '',
+
+            // Empty now. The server fills them in.
+            customers: [],
+            products: [],
+
+            async loadOptions() {
+                this.loading = true;
+                this.error = '';
+                try {
+                    this.customers = await getJSON('/api/customers');
+                    this.products = await getJSON('/api/products');
+                } catch (err) {
+                    this.error = `Could not load the form: ${err.message}`;
+                } finally {
+                    this.loading = false;
+                }
+            },
+
+            // Everything below is unchanged from lesson 05c.
+            get customer() {
+                return this.customers.find(c => c.id === this.customerId);
+            },
+            get product() {
+                return this.products.find(p => p.id === this.productId);
+            },
+            get totalCents() {
+                return this.product ? toCents(this.product.price) * this.quantity : 0;
+            },
+            get canSubmit() {
+                return this.customer && this.product && this.quantity >= 1;
+            },
+
+            preview() {
+                const total = (this.totalCents / 100).toFixed(2);
+                this.message = `${this.customer.name}: ${this.quantity} × ${this.product.name} = $${total}`;
+            },
+            reset() {
+                this.customerId = '';
+                this.productId = '';
+                this.quantity = 1;
+                this.message = '';
+            },
+        };
+    }
+</script>
+</body>
+</html>

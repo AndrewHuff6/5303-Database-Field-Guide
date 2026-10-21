@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>06a – Load data with a button</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-xl mx-auto p-6 space-y-6">
+    <h1 class="text-2xl font-bold">Loading data from FastAPI</h1>
+
+    <!-- Step 1: the simplest possible request. The server sends back an array of strings. -->
+    <article x-data="{ countries: [] }"
+             class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+        <h2 class="text-lg font-semibold">1. Countries</h2>
+
+        <!--
+            fetch(url) asks the server for the URL. It returns a Promise (a value that arrives later).
+            .then(r => r.json()) waits for the response and reads its body as JSON.
+            .then(data => countries = data) puts the array into our state.
+        -->
+        <button type="button"
+                @click="fetch('/api/countries').then(r => r.json()).then(data => countries = data)"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded">
+            Load countries
+        </button>
+
+        <select class="w-full border border-gray-300 rounded px-3 py-2">
+            <option value="" x-text="countries.length ? 'Choose a country' : 'Not loaded yet'"></option>
+            <!-- For an array of plain strings, the string is both the key and the value. -->
+            <template x-for="country in countries" :key="country">
+                <option :value="country" x-text="country"></option>
+            </template>
+        </select>
+    </article>
+
+    <!-- Step 2: the same idea written as an async method, with loading and error state. -->
+    <article x-data="customerLoader()"
+             class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+        <h2 class="text-lg font-semibold">2. Customers (with loading and errors)</h2>
+
+        <div class="flex gap-2">
+            <button type="button" @click="loadCustomers('/api/customers')" :disabled="loading"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded disabled:opacity-50">
+                Load customers
+            </button>
+            <!-- A deliberately wrong URL, so you can see the error path. -->
+            <button type="button" @click="loadCustomers('/api/customerz')" :disabled="loading"
+                    class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded disabled:opacity-50">
+                Load from a wrong URL
+            </button>
+        </div>
+
+        <p x-show="loading" class="text-gray-500">Loading…</p>
+        <p x-show="error" x-text="error" class="bg-red-50 border border-red-200 text-red-700 rounded p-3"></p>
+
+        <select x-model.number="customerId" :disabled="customers.length === 0"
+                class="w-full border border-gray-300 rounded px-3 py-2 disabled:bg-gray-100">
+            <option value="">Choose a customer</option>
+            <template x-for="customer in customers" :key="customer.id">
+                <option :value="customer.id" x-text="customer.name"></option>
+            </template>
+        </select>
+        <p x-show="customerId">Selected customer ID: <span x-text="customerId"></span></p>
+    </article>
+</main>
+
+<script>
+    function customerLoader() {
+        return {
+            customers: [],
+            customerId: '',
+            loading: false,
+            error: '',
+
+            // "async" lets us use "await" inside: pause here until the server answers.
+            async loadCustomers(url) {
+                this.loading = true;
+                this.error = '';
+                try {
+                    const response = await fetch(url);
+
+                    // fetch() only throws if the network fails. A 404 or 500 still "succeeds",
+                    // so we have to check response.ok (true for status 200–299) ourselves.
+                    if (!response.ok) {
+                        throw new Error(`Server answered ${response.status} ${response.statusText}`);
+                    }
+
+                    this.customers = await response.json();
+                } catch (err) {
+                    this.customers = [];
+                    this.error = `Could not load customers: ${err.message}`;
+                } finally {
+                    // finally runs whether it worked or not.
+                    this.loading = false;
+                }
+            },
+        };
+    }
+</script>
+</body>
+</html>

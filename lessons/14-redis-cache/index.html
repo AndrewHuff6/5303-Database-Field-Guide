@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>14 – The complete app</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-3xl mx-auto p-6 space-y-6" x-data="shop()">
+    <h1 class="text-2xl font-bold">Purchases</h1>
+
+    <p x-show="error" x-text="error" class="bg-red-50 border border-red-200 text-red-700 rounded p-3"></p>
+
+    <!-- ===== 1. Customer and card ===== -->
+    <section class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+        <h2 class="text-lg font-semibold">1. Customer</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="block">
+                <span class="block font-medium mb-1">Customer</span>
+                <select x-model.number="customerId" @change="loadCustomer()" :disabled="customerLoading"
+                        class="w-full border border-gray-300 rounded px-3 py-2 disabled:bg-gray-100">
+                    <option value="">Choose a customer</option>
+                    <template x-for="c in customers" :key="c.id">
+                        <option :value="c.id" x-text="c.name"></option>
+                    </template>
+                </select>
+            </label>
+            <label class="block">
+                <span class="block font-medium mb-1">Card</span>
+                <select x-model.number="cardId" :disabled="!customer"
+                        class="w-full border border-gray-300 rounded px-3 py-2 disabled:bg-gray-100">
+                    <option value="" x-text="customer ? 'Choose a card' : 'Choose a customer first'"></option>
+                    <template x-for="card in customer?.cards ?? []" :key="card.card_id">
+                        <option :value="card.card_id" x-text="`${card.card_type} ending ${card.last4}`"></option>
+                    </template>
+                </select>
+            </label>
+        </div>
+        <p x-show="customerError" x-text="customerError" class="text-red-700"></p>
+    </section>
+
+    <!-- ===== 2. Product search (cached) ===== -->
+    <section class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+        <div class="flex items-center justify-between">
+            <h2 class="text-lg font-semibold">2. Product</h2>
+            <!-- Development-only cache indicator, read from the X-Cache response header -->
+            <span x-show="cacheStatus" class="text-xs font-mono px-2 py-1 rounded"
+                  :class="{
+                      'bg-green-100 text-green-800': cacheStatus === 'HIT',
+                      'bg-amber-100 text-amber-800': cacheStatus === 'MISS',
+                      'bg-gray-100 text-gray-700': cacheStatus === 'OFF',
+                  }"
+                  x-text="cacheLabel"></span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+            <label class="block sm:col-span-2">
+                <span class="block text-sm font-medium mb-1">Search</span>
+                <input type="search" x-model="query" @input.debounce.400ms="searchProducts()"
+                       placeholder="lamp, kettle, key…"
+                       class="w-full border border-gray-300 rounded px-3 py-2">
+            </label>
+            <label class="block">
+                <span class="block text-sm font-medium mb-1">Max price ($)</span>
+                <input type="number" min="0" step="0.01" x-model="maxPrice" @input.debounce.400ms="searchProducts()"
+                       class="w-full border border-gray-300 rounded px-3 py-2">
+            </label>
+            <label class="block">
+                <span class="block text-sm font-medium mb-1">Sort</span>
+                <select x-model="sort" @change="searchProducts()"
+                        class="w-full border border-gray-300 rounded px-3 py-2">
+                    <option value="name">Name</option>
+                    <option value="price_asc">Price ↑</option>
+                    <option value="price_desc">Price ↓</option>
+                </select>
+            </label>
+        </div>
+
+        <p x-show="searchLoading" class="text-sm text-gray-500">Searching…</p>
+        <p x-show="searchError" x-text="searchError" class="text-red-700"></p>
+        <p x-show="!searchLoading && !searchError && results.length === 0" class="text-gray-500">No matches.</p>
+
+        <!-- max-h-64 overflow-auto: a scrolling box at most 16rem tall -->
+        <ul class="divide-y divide-gray-100 max-h-64 overflow-auto border border-gray-100 rounded">
+            <template x-for="p in results" :key="p.id">
+                <li>
+                    <button type="button" @click="selectProduct(p.id)"
+                            class="w-full text-left px-3 py-2 flex justify-between hover:bg-gray-50"
+                            :class="productId === p.id && 'bg-blue-50 font-medium'">
+                        <span x-text="p.name"></span>
+                        <span class="text-gray-600" x-text="`$${p.price}`"></span>
+                    </button>
+                </li>
+            </template>
+        </ul>
+    </section>
+
+    <!-- ===== 3. Quantity and purchase ===== -->
+    <form @submit.prevent="placePurchase()"
+          class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+        <h2 class="text-lg font-semibold">3. Purchase</h2>
+
+        <p x-show="!product" class="italic text-gray-500">Select a product above.</p>
+        <template x-if="product">
+            <div class="bg-gray-50 rounded p-4">
+                <p class="font-semibold" x-text="product.name"></p>
+                <!-- Always loaded fresh from MongoDB, never from the search cache -->
+                <p>$<span x-text="product.price"></span> each · bought <span x-text="product.times_purchased"></span> times</p>
+            </div>
+        </template>
+
+        <div class="flex items-end gap-4">
+            <label class="block">
+                <span class="block font-medium mb-1">Quantity</span>
+                <input type="number" min="1" max="10" required x-model.number="quantity"
+                       class="w-32 border border-gray-300 rounded px-3 py-2">
+            </label>
+            <p x-show="product" class="pb-2">
+                Estimated total: <strong>$<span x-text="(totalCents / 100).toFixed(2)"></span></strong>
+            </p>
+        </div>
+
+        <button type="submit" :disabled="!canSubmit || submitting"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed">
+            <span x-text="submitting ? 'Placing purchase…' : 'Place purchase'"></span>
+        </button>
+
+        <p x-show="submitError" x-text="submitError" class="bg-red-50 border border-red-200 text-red-700 rounded p-3"></p>
+        <template x-if="receipt">
+            <div class="bg-green-50 border border-green-200 text-green-800 rounded p-4">
+                <p class="font-semibold">Purchase recorded</p>
+                <p><span x-text="receipt.customer_name"></span> bought <span x-text="receipt.quantity"></span> ×
+                   <span x-text="receipt.product_name"></span> at $<span x-text="receipt.unit_price"></span> =
+                   <strong>$<span x-text="receipt.total"></span></strong></p>
+                <p class="text-sm">Purchase IDs: <span x-text="receipt.purchase_ids.join(', ')"></span></p>
+            </div>
+        </template>
+    </form>
+
+    <!-- ===== 4. History ===== -->
+    <section class="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
+        <h2 class="text-lg font-semibold mb-2">Recent purchases</h2>
+        <p x-show="!customerId" class="italic text-gray-500">Choose a customer to see their history.</p>
+        <p x-show="customerLoading" class="text-gray-500">Loading…</p>
+        <p x-show="history !== null && history.length === 0" class="text-gray-500">No purchases yet.</p>
+        <table x-show="history && history.length > 0" class="w-full text-left text-sm">
+            <thead class="border-b border-gray-200">
+                <tr><th class="py-2">Date</th><th>Product</th><th>Department</th><th class="text-right">Amount</th></tr>
+            </thead>
+            <tbody>
+                <template x-for="row in history ?? []" :key="row.id">
+                    <tr class="border-b border-gray-100">
+                        <td class="py-2" x-text="row.purchase_date"></td>
+                        <td x-text="row.product_name"></td>
+                        <td x-text="row.department"></td>
+                        <td class="text-right" x-text="`$${row.amount}`"></td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ===== Register a customer (lesson 09), collapsed by default ===== -->
+    <!-- <details>/<summary>: a built-in HTML show/hide section, no Alpine needed -->
+    <details class="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
+        <summary class="font-semibold cursor-pointer">Register a new customer</summary>
+        <form @submit.prevent="registerCustomer()" class="grid grid-cols-2 gap-4 mt-4">
+            <input x-model="newCustomer.first_name" required placeholder="First name"
+                   class="border border-gray-300 rounded px-3 py-2">
+            <input x-model="newCustomer.last_name" required placeholder="Last name"
+                   class="border border-gray-300 rounded px-3 py-2">
+            <input type="email" x-model="newCustomer.email" required placeholder="Email"
+                   class="col-span-2 border border-gray-300 rounded px-3 py-2">
+            <input x-model="newCustomer.address" required placeholder="Street address"
+                   class="col-span-2 border border-gray-300 rounded px-3 py-2">
+            <input x-model="newCustomer.zipcode" required pattern="\d{5}" inputmode="numeric" placeholder="ZIP"
+                   class="border border-gray-300 rounded px-3 py-2">
+            <input x-model.trim="newCustomer.state_code" required pattern="[A-Za-z]{2}" maxlength="2" placeholder="State (TX)"
+                   class="border border-gray-300 rounded px-3 py-2 uppercase">
+            <select x-model="newCustomer.card_type" required class="border border-gray-300 rounded px-3 py-2">
+                <option value="">Card type…</option>
+                <option value="visa">Visa</option>
+                <option value="mastercard">Mastercard</option>
+                <option value="americanexpress">American Express</option>
+                <option value="discover">Discover</option>
+            </select>
+            <input x-model.trim="newCustomer.card_number" required pattern="\d{16}" inputmode="numeric"
+                   placeholder="Card number (16 digits)" class="border border-gray-300 rounded px-3 py-2">
+            <button type="submit" :disabled="saving"
+                    class="col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded disabled:opacity-50">
+                Register customer
+            </button>
+            <p x-show="registerMessage" x-text="registerMessage" class="col-span-2 text-green-800"></p>
+            <p x-show="registerError" x-text="registerError" class="col-span-2 text-red-700"></p>
+        </form>
+    </details>
+
+    <!-- ===== Development tool: change a price to see invalidation ===== -->
+    <details class="bg-amber-50 border border-amber-200 rounded-lg p-6">
+        <summary class="font-semibold cursor-pointer">Developer: change the selected product's price</summary>
+        <form @submit.prevent="changePrice()" class="flex items-center gap-2 mt-4">
+            <span x-text="product ? product.name : 'Select a product first'"></span>
+            <input type="number" min="0.01" step="0.01" x-model="newPrice" required :disabled="!product"
+                   class="w-32 border border-gray-300 rounded px-3 py-2 bg-white">
+            <button type="submit" :disabled="!product"
+                    class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded disabled:opacity-50">Update price</button>
+        </form>
+        <p x-show="priceMessage" x-text="priceMessage" class="mt-2 text-sm"></p>
+    </details>
+</main>
+
+<script>
+    const MIN_LENGTH = 2;
+
+    function toCents(price) {
+        return Math.round(Number(price) * 100);
+    }
+
+    function errorMessages(data, status) {
+        if (typeof data?.detail === 'string') return [data.detail];
+        if (Array.isArray(data?.detail)) return data.detail.map(e => `${e.loc.at(-1)}: ${e.msg}`);
+        return [`The server answered ${status}`];
+    }
+
+    // One helper for every request. Returns the data AND the response (for headers).
+    async function request(method, url, body) {
+        const options = { method };
+        if (body !== undefined) {
+            options.headers = { 'Content-Type': 'application/json' };
+            options.body = JSON.stringify(body);
+        }
+        const response = await fetch(url, options);
+        const data = await response.json();
+        if (!response.ok) throw new Error(errorMessages(data, response.status).join('; '));
+        return { data, response };
+    }
+    const getJSON = async url => (await request('GET', url)).data;
+    const postJSON = async (url, body) => (await request('POST', url, body)).data;
+
+    function emptyCustomer() {
+        return { first_name: '', last_name: '', email: '', address: '',
+                 zipcode: '', state_code: '', card_type: '', card_number: '' };
+    }
+
+    function shop() {
+        return {
+            error: '',
+
+            // customer
+            customers: [],
+            customerId: '',
+            customer: null,
+            cardId: '',
+            history: null,
+            customerLoading: false,
+            customerError: '',
+
+            // search
+            query: '',
+            maxPrice: '',
+            sort: 'name',
+            results: [],
+            searchLoading: false,
+            searchError: '',
+            cacheStatus: '',
+            searchCount: 0,
+
+            // purchase
+            productId: '',
+            product: null,
+            quantity: 1,
+            submitting: false,
+            submitError: '',
+            receipt: null,
+
+            // registration and dev tools
+            newCustomer: emptyCustomer(),
+            saving: false,
+            registerMessage: '',
+            registerError: '',
+            newPrice: '',
+            priceMessage: '',
+
+            async init() {
+                try {
+                    this.customers = await getJSON('/api/customers');
+                } catch (err) {
+                    this.error = `Could not load customers: ${err.message}`;
+                }
+                this.searchProducts();
+            },
+
+            get cacheLabel() {
+                return {
+                    HIT: 'Search source: Redis — HIT',
+                    MISS: 'Search source: MongoDB — MISS',
+                    OFF: 'Search source: MongoDB — Redis unavailable',
+                }[this.cacheStatus] ?? '';
+            },
+            get totalCents() {
+                return this.product ? toCents(this.product.price) * this.quantity : 0;
+            },
+            get canSubmit() {
+                return this.customer && this.cardId && this.product && this.quantity >= 1;
+            },
+
+            async loadCustomer() {
+                this.customer = null;
+                this.cardId = '';
+                this.history = null;
+                this.customerError = '';
+                this.receipt = null;
+                if (!this.customerId) return;
+
+                this.customerLoading = true;
+                try {
+                    this.customer = await getJSON(`/api/customers/${this.customerId}`);
+                    this.history = await getJSON(`/api/customers/${this.customerId}/purchases`);
+                } catch (err) {
+                    this.customerError = `Could not load customer: ${err.message}`;
+                } finally {
+                    this.customerLoading = false;
+                }
+            },
+
+            async searchProducts() {
+                const term = this.query.trim();
+                if (term.length > 0 && term.length < MIN_LENGTH) return;
+
+                const params = new URLSearchParams({ sort: this.sort, limit: 25 });
+                if (term) params.set('q', term);
+                if (this.maxPrice !== '') params.set('max_price', this.maxPrice);
+
+                const myNumber = ++this.searchCount;
+                this.searchLoading = true;
+                this.searchError = '';
+                try {
+                    const { data, response } = await request('GET', `/api/products?${params}`);
+                    if (myNumber !== this.searchCount) return;
+                    this.results = data;
+                    // Response headers are read with .get(); names aren't case-sensitive.
+                    this.cacheStatus = response.headers.get('X-Cache') ?? '';
+                } catch (err) {
+                    if (myNumber !== this.searchCount) return;
+                    this.results = [];
+                    this.searchError = `Search failed: ${err.message}`;
+                } finally {
+                    if (myNumber === this.searchCount) this.searchLoading = false;
+                }
+            },
+
+            async selectProduct(id) {
+                this.productId = id;
+                this.product = null;
+                this.receipt = null;
+                this.priceMessage = '';
+                try {
+                    // Not cached: the price shown before buying comes straight from MongoDB.
+                    this.product = await getJSON(`/api/products/${id}`);
+                    this.newPrice = this.product.price;
+                } catch (err) {
+                    this.submitError = `Could not load product: ${err.message}`;
+                }
+            },
+
+            async placePurchase() {
+                this.submitting = true;
+                this.submitError = '';
+                this.receipt = null;
+                try {
+                    this.receipt = await postJSON('/api/purchases', {
+                        customer_id: this.customerId,
+                        card_id: this.cardId,
+                        product_id: this.productId,
+                        quantity: this.quantity,
+                    });
+                    this.history = await getJSON(`/api/customers/${this.customerId}/purchases`);
+                    this.product = await getJSON(`/api/products/${this.productId}`);
+                } catch (err) {
+                    this.submitError = `Purchase failed: ${err.message}`;
+                } finally {
+                    this.submitting = false;
+                }
+            },
+
+            async registerCustomer() {
+                this.saving = true;
+                this.registerMessage = '';
+                this.registerError = '';
+                try {
+                    const body = { ...this.newCustomer, state_code: this.newCustomer.state_code.toUpperCase() };
+                    const created = await postJSON('/api/customers', body);
+                    this.registerMessage = `Created customer #${created.id}: ${created.name}`;
+                    this.newCustomer = emptyCustomer();
+                    this.customers = await getJSON('/api/customers');
+                    this.customerId = created.id;
+                    await this.loadCustomer();
+                } catch (err) {
+                    this.registerError = err.message;
+                } finally {
+                    this.saving = false;
+                }
+            },
+
+            async changePrice() {
+                try {
+                    const { data } = await request('PATCH', `/api/products/${this.productId}/price`, { price: this.newPrice });
+                    this.product = { ...this.product, price: data.price };
+                    this.priceMessage = `Price is now $${data.price}. Search again and watch for a MISS.`;
+                    this.searchProducts();
+                } catch (err) {
+                    this.priceMessage = `Could not change price: ${err.message}`;
+                }
+            },
+        };
+    }
+</script>
+</body>
+</html>

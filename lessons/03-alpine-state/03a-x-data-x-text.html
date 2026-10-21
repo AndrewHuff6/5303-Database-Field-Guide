@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>03a – x-data and x-text</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <!-- Load Alpine. "defer" = run it after the HTML below has been read. -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-xl mx-auto p-6 space-y-4">
+    <h1 class="text-2xl font-bold">x-data and x-text</h1>
+
+    <!--
+        x-data turns this <article> into an Alpine "component".
+        The object inside is its STATE: variables that everything inside the <article> can use.
+    -->
+    <article x-data="{ productName: 'Wireless Keyboard 0', priceCents: 20211, quantity: 2 }"
+             class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-2">
+
+        <!-- x-text replaces the element's text with the value of a JavaScript expression. -->
+        <p>Product: <strong x-text="productName"></strong></p>
+
+        <!-- Any expression works: math, method calls, template strings. -->
+        <p>Price: $<span x-text="(priceCents / 100).toFixed(2)"></span></p>
+        <p>Quantity: <span x-text="quantity"></span></p>
+        <p>Total: $<span x-text="(quantity * priceCents / 100).toFixed(2)"></span></p>
+
+        <p x-text="`${quantity} × ${productName}`"></p>
+    </article>
+
+    <!-- A second component has its OWN state; it can't see productName above. -->
+    <article x-data="{ productName: 'Portable Blender 1' }"
+             class="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
+        <p>Another component: <strong x-text="productName"></strong></p>
+    </article>
+
+    <p class="text-sm text-gray-600">
+        Try it: open the browser's developer tools (F12), select the first article in the
+        Elements panel, and in the Console type <code>Alpine.$data($0).quantity = 5</code>
+        (<code>$0</code> is the browser's name for the selected element).
+        The total updates by itself. That automatic updating is what "reactive" means.
+    </p>
+</main>
+</body>
+</html>

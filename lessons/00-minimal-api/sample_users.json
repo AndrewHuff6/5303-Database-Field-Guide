@@ -1,0 +1,362 @@
+[
+  {
+    "_id": 501,
+    "first_name": "Ada",
+    "last_name": "Lamport",
+    "email": "ada.lamport.501@example.com",
+    "address": "9610 Main St",
+    "zipcode": "51266",
+    "state_code": "NJ",
+    "cards": [
+      {
+        "card_id": 726,
+        "card_type": "maestro",
+        "card_number": "4000000000000726"
+      }
+    ]
+  },
+  {
+    "_id": 502,
+    "first_name": "Margaret",
+    "last_name": "Berners",
+    "email": "margaret.berners.502@example.com",
+    "address": "3448 Main St",
+    "zipcode": "11905",
+    "state_code": "OR",
+    "cards": [
+      {
+        "card_id": 727,
+        "card_type": "mastercard",
+        "card_number": "4000000000000727"
+      }
+    ]
+  },
+  {
+    "_id": 503,
+    "first_name": "Guido",
+    "last_name": "Torvalds",
+    "email": "guido.torvalds.503@example.com",
+    "address": "3975 Main St",
+    "zipcode": "48316",
+    "state_code": "AL",
+    "cards": [
+      {
+        "card_id": 728,
+        "card_type": "bankcard",
+        "card_number": "4000000000000728"
+      },
+      {
+        "card_id": 729,
+        "card_type": "instapayment",
+        "card_number": "4000000000000729"
+      }
+    ]
+  },
+  {
+    "_id": 504,
+    "first_name": "Barbara",
+    "last_name": "Johnson",
+    "email": "barbara.johnson.504@example.com",
+    "address": "2984 Main St",
+    "zipcode": "58459",
+    "state_code": "IN",
+    "cards": [
+      {
+        "card_id": 730,
+        "card_type": "visa",
+        "card_number": "4000000000000730"
+      }
+    ]
+  },
+  {
+    "_id": 505,
+    "first_name": "Tim",
+    "last_name": "Goldwasser",
+    "email": "tim.goldwasser.505@example.com",
+    "address": "1752 Main St",
+    "zipcode": "36038",
+    "state_code": "OK",
+    "cards": [
+      {
+        "card_id": 731,
+        "card_type": "americanexpress",
+        "card_number": "4000000000000731"
+      },
+      {
+        "card_id": 732,
+        "card_type": "switch",
+        "card_number": "4000000000000732"
+      }
+    ]
+  },
+  {
+    "_id": 506,
+    "first_name": "Alan",
+    "last_name": "Berners",
+    "email": "alan.berners.506@example.com",
+    "address": "2416 Main St",
+    "zipcode": "46206",
+    "state_code": "MN",
+    "cards": [
+      {
+        "card_id": 733,
+        "card_type": "bankcard",
+        "card_number": "4000000000000733"
+      },
+      {
+        "card_id": 734,
+        "card_type": "americanexpress",
+        "card_number": "4000000000000734"
+      }
+    ]
+  },
+  {
+    "_id": 507,
+    "first_name": "Ada",
+    "last_name": "Hopper",
+    "email": "ada.hopper.507@example.com",
+    "address": "7638 Main St",
+    "zipcode": "68940",
+    "state_code": "SD",
+    "cards": [
+      {
+        "card_id": 735,
+        "card_type": "maestro",
+        "card_number": "4000000000000735"
+      },
+      {
+        "card_id": 736,
+        "card_type": "solo",
+        "card_number": "4000000000000736"
+      }
+    ]
+  },
+  {
+    "_id": 508,
+    "first_name": "Alan",
+    "last_name": "Borg",
+    "email": "alan.borg.508@example.com",
+    "address": "2324 Main St",
+    "zipcode": "33634",
+    "state_code": "KS",
+    "cards": [
+      {
+        "card_id": 737,
+        "card_type": "americanexpress",
+        "card_number": "4000000000000737"
+      },
+      {
+        "card_id": 738,
+        "card_type": "instapayment",
+        "card_number": "4000000000000738"
+      }
+    ]
+  },
+  {
+    "_id": 509,
+    "first_name": "Shafi",
+    "last_name": "Lovelace",
+    "email": "shafi.lovelace.509@example.com",
+    "address": "4301 Main St",
+    "zipcode": "80505",
+    "state_code": "KS",
+    "cards": [
+      {
+        "card_id": 739,
+        "card_type": "switch",
+        "card_number": "4000000000000739"
+      }
+    ]
+  },
+  {
+    "_id": 510,
+    "first_name": "Bjarne",
+    "last_name": "Cerf",
+    "email": "bjarne.cerf.510@example.com",
+    "address": "1685 Main St",
+    "zipcode": "74158",
+    "state_code": "MO",
+    "cards": [
+      {
+        "card_id": 740,
+        "card_type": "visa",
+        "card_number": "4000000000000740"
+      },
+      {
+        "card_id": 741,
+        "card_type": "mastercard",
+        "card_number": "4000000000000741"
+      }
+    ]
+  },
+  {
+    "_id": 511,
+    "first_name": "Grace",
+    "last_name": "Cerf",
+    "email": "grace.cerf.511@example.com",
+    "address": "4003 Main St",
+    "zipcode": "14314",
+    "state_code": "NJ",
+    "cards": [
+      {
+        "card_id": 742,
+        "card_type": "discover",
+        "card_number": "4000000000000742"
+      }
+    ]
+  },
+  {
+    "_id": 512,
+    "first_name": "Ada",
+    "last_name": "Cerf",
+    "email": "ada.cerf.512@example.com",
+    "address": "7151 Main St",
+    "zipcode": "70707",
+    "state_code": "SD",
+    "cards": [
+      {
+        "card_id": 743,
+        "card_type": "mastercard",
+        "card_number": "4000000000000743"
+      }
+    ]
+  },
+  {
+    "_id": 513,
+    "first_name": "Ken",
+    "last_name": "Thompson",
+    "email": "ken.thompson.513@example.com",
+    "address": "4227 Main St",
+    "zipcode": "91837",
+    "state_code": "SC",
+    "cards": [
+      {
+        "card_id": 744,
+        "card_type": "maestro",
+        "card_number": "4000000000000744"
+      }
+    ]
+  },
+  {
+    "_id": 514,
+    "first_name": "Ada",
+    "last_name": "Hamilton",
+    "email": "ada.hamilton.514@example.com",
+    "address": "5129 Main St",
+    "zipcode": "13344",
+    "state_code": "NJ",
+    "cards": [
+      {
+        "card_id": 745,
+        "card_type": "laser",
+        "card_number": "4000000000000745"
+      }
+    ]
+  },
+  {
+    "_id": 515,
+    "first_name": "Anita",
+    "last_name": "Johnson",
+    "email": "anita.johnson.515@example.com",
+    "address": "9729 Main St",
+    "zipcode": "52872",
+    "state_code": "OH",
+    "cards": [
+      {
+        "card_id": 746,
+        "card_type": "jcb",
+        "card_number": "4000000000000746"
+      }
+    ]
+  },
+  {
+    "_id": 516,
+    "first_name": "Radia",
+    "last_name": "Liskov",
+    "email": "radia.liskov.516@example.com",
+    "address": "4722 Main St",
+    "zipcode": "98425",
+    "state_code": "ND",
+    "cards": [
+      {
+        "card_id": 747,
+        "card_type": "china-unionpay",
+        "card_number": "4000000000000747"
+      }
+    ]
+  },
+  {
+    "_id": 517,
+    "first_name": "Anita",
+    "last_name": "Lovelace",
+    "email": "anita.lovelace.517@example.com",
+    "address": "7844 Main St",
+    "zipcode": "19008",
+    "state_code": "MT",
+    "cards": [
+      {
+        "card_id": 748,
+        "card_type": "americanexpress",
+        "card_number": "4000000000000748"
+      },
+      {
+        "card_id": 749,
+        "card_type": "switch",
+        "card_number": "4000000000000749"
+      }
+    ]
+  },
+  {
+    "_id": 518,
+    "first_name": "Vint",
+    "last_name": "Lovelace",
+    "email": "vint.lovelace.518@example.com",
+    "address": "5893 Main St",
+    "zipcode": "96707",
+    "state_code": "OK",
+    "cards": [
+      {
+        "card_id": 750,
+        "card_type": "diners-club-international",
+        "card_number": "4000000000000750"
+      }
+    ]
+  },
+  {
+    "_id": 519,
+    "first_name": "Grace",
+    "last_name": "Rossum",
+    "email": "grace.rossum.519@example.com",
+    "address": "7942 Main St",
+    "zipcode": "77199",
+    "state_code": "AK",
+    "cards": [
+      {
+        "card_id": 751,
+        "card_type": "americanexpress",
+        "card_number": "4000000000000751"
+      },
+      {
+        "card_id": 752,
+        "card_type": "instapayment",
+        "card_number": "4000000000000752"
+      }
+    ]
+  },
+  {
+    "_id": 520,
+    "first_name": "Katherine",
+    "last_name": "Goldwasser",
+    "email": "katherine.goldwasser.520@example.com",
+    "address": "4916 Main St",
+    "zipcode": "45586",
+    "state_code": "VA",
+    "cards": [
+      {
+        "card_id": 753,
+        "card_type": "solo",
+        "card_number": "4000000000000753"
+      }
+    ]
+  }
+]

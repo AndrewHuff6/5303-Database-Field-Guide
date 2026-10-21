@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>05b – A dropdown from an array</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">A dropdown built from an array</h1>
+
+    <article x-data="customerPicker()"
+             class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+
+        <div>
+            <label for="customer" class="block font-medium mb-1">Customer</label>
+            <!-- .number: the selected value is stored as 2, not "2", so it matches customer.id -->
+            <select id="customer" x-model.number="selectedCustomerId"
+                    class="w-full border border-gray-300 rounded px-3 py-2">
+                <option value="">Choose a customer</option>
+                <template x-for="customer in customers" :key="customer.id">
+                    <!--
+                        :value="..." is a BOUND attribute: its value is a JavaScript expression.
+                        Without the colon, value="customer.id" would literally be the text "customer.id".
+                    -->
+                    <option :value="customer.id" x-text="customer.name"></option>
+                </template>
+            </select>
+        </div>
+
+        <p>selectedCustomerId: <code class="bg-gray-100 px-1 rounded" x-text="JSON.stringify(selectedCustomerId)"></code></p>
+
+        <!-- The ID is what we store. The getter looks up the full object when we need the name. -->
+        <p x-show="selectedCustomer">
+            Selected: <strong x-text="selectedCustomer?.name"></strong>
+        </p>
+    </article>
+</main>
+
+<script>
+    function customerPicker() {
+        return {
+            selectedCustomerId: '',
+            // Real customers from noidx_10k, typed in by hand for now.
+            customers: [
+                { id: 1, name: 'Margaret Stroustrup' },
+                { id: 2, name: 'Tim Ritchie' },
+                { id: 3, name: 'Frances Berners' },
+                { id: 4, name: 'Anita Perlman' },
+                { id: 5, name: 'Alan Allen' },
+                { id: 6, name: 'Grace Knuth' },
+                { id: 7, name: 'Katherine Johnson' },
+                { id: 8, name: 'Alan Ritchie' },
+            ],
+
+            // .find() returns the first item where the test is true, or undefined.
+            get selectedCustomer() {
+                return this.customers.find(c => c.id === this.selectedCustomerId);
+            },
+        };
+    }
+</script>
+</body>
+</html>

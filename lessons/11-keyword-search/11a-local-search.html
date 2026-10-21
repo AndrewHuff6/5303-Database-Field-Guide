@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>11a – Searching a local list</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-xl mx-auto p-6 space-y-4" x-data="localSearch()">
+    <h1 class="text-2xl font-bold">Product search (no server)</h1>
+    <p class="text-gray-600">Open this file directly. The products are a hard-coded array.</p>
+
+    <form @submit.prevent="search()"
+          class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+        <div class="flex gap-2">
+            <!-- type="search" adds a clear (×) button in most browsers -->
+            <input type="search" x-model="query" placeholder="e.g. lamp, kettle, key"
+                   class="flex-1 border border-gray-300 rounded px-3 py-2">
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded">
+                Search
+            </button>
+        </div>
+
+        <!-- Two definitions of "matches". Try "key" with each. -->
+        <fieldset class="flex gap-6 text-sm">
+            <label class="flex items-center gap-2">
+                <input type="radio" value="word" x-model="mode" @change="search()"> Whole word
+            </label>
+            <label class="flex items-center gap-2">
+                <input type="radio" value="contains" x-model="mode" @change="search()"> Contains the text
+            </label>
+        </fieldset>
+    </form>
+
+    <section class="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
+        <p x-show="searched === null" class="italic text-gray-500">Type a word and press Search.</p>
+        <p x-show="searched !== null && results.length === 0" class="text-gray-500">
+            No products match “<span x-text="searched"></span>”.
+        </p>
+        <p x-show="results.length" class="text-sm text-gray-500 mb-2">
+            <span x-text="results.length"></span> match(es) for “<span x-text="searched"></span>”
+        </p>
+        <ul class="divide-y divide-gray-100">
+            <template x-for="product in results" :key="product.id">
+                <li class="py-2 flex justify-between">
+                    <span x-text="product.name"></span>
+                    <span class="text-gray-600" x-text="`$${product.price}`"></span>
+                </li>
+            </template>
+        </ul>
+    </section>
+</main>
+
+<script>
+    function localSearch() {
+        return {
+            query: '',
+            mode: 'word',
+            searched: null,  // the term the current results are for (null = no search yet)
+            results: [],
+
+            products: [
+                { id: 1,  name: 'Wireless Keyboard 0',   price: '202.11' },
+                { id: 2,  name: 'Portable Blender 1',    price: '259.06' },
+                { id: 3,  name: 'Adjustable Monitor 2',  price: '398.52' },
+                { id: 4,  name: 'Adjustable Skillet 3',  price: '322.00' },
+                { id: 5,  name: 'Foldable Lamp 4',       price: '254.51' },
+                { id: 6,  name: 'Stainless Lamp 5',      price: '264.04' },
+                { id: 7,  name: 'Foldable Toolkit 6',    price: '218.36' },
+                { id: 8,  name: 'Classic Kettle 7',      price: '256.65' },
+                { id: 9,  name: 'Compact Kettle 8',      price: '152.98' },
+                { id: 10, name: 'Compact Lamp 9',        price: '346.21' },
+                { id: 11, name: 'Premium Lamp 10',       price: '10.92' },
+                { id: 12, name: 'Insulated Tripod 11',   price: '399.31' },
+                { id: 13, name: 'Bamboo Organizer 12',   price: '98.21' },
+                { id: 14, name: 'Adjustable Toolkit 13', price: '303.36' },
+                { id: 15, name: 'Compact Lamp 14',       price: '92.02' },
+                { id: 16, name: 'Ergonomic Keyboard 15', price: '164.13' },
+                { id: 17, name: 'Rugged Mixer 16',       price: '376.07' },
+                { id: 18, name: 'Ceramic Kettle 17',     price: '339.80' },
+                { id: 19, name: 'Ergonomic Kettle 18',   price: '92.09' },
+                { id: 20, name: 'Premium Lamp 19',       price: '234.80' },
+                { id: 21, name: 'Adjustable Bottle 20',  price: '201.46' },
+                { id: 22, name: 'Compact Speaker 21',    price: '120.92' },
+                { id: 23, name: 'Bamboo Bottle 22',      price: '70.82' },
+                { id: 24, name: 'Wireless Kettle 23',    price: '303.70' },
+            ],
+
+            search() {
+                // trim: "  lamp " → "lamp".  toLowerCase: "LAMP" → "lamp", so case doesn't matter.
+                const term = this.query.trim().toLowerCase();
+                if (term === '') {
+                    this.searched = null;
+                    this.results = [];
+                    return;
+                }
+
+                // .filter keeps the items where the test returns true.
+                this.results = this.products.filter(p => {
+                    const name = p.name.toLowerCase();
+                    if (this.mode === 'word') {
+                        return name.split(' ').includes(term);  // "wireless keyboard 0" → ["wireless", "keyboard", "0"]
+                    }
+                    return name.includes(term);                 // anywhere in the name
+                });
+                this.searched = term;
+            },
+        };
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>03c – x-show</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">x-show: display only when something is true</h1>
+
+    <article x-data="{ quantity: 1, showDetails: false }"
+             class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+
+        <label class="block">
+            <span class="block font-medium mb-1">Quantity</span>
+            <input type="number" min="1" x-model.number="quantity"
+                   class="w-32 border border-gray-300 rounded px-3 py-2">
+        </label>
+
+        <!-- x-show hides the element when its expression is false (it sets display: none). -->
+        <p x-show="quantity > 5" class="text-amber-700">⚠️ Large order: more than 5 items.</p>
+        <p x-show="quantity < 1" class="text-red-600">Quantity must be at least 1.</p>
+
+        <!-- A checkbox with x-model holds true or false. -->
+        <label class="flex items-center gap-2">
+            <input type="checkbox" x-model="showDetails">
+            Show product details
+        </label>
+
+        <section x-show="showDetails" class="bg-gray-50 rounded p-4">
+            <h3 class="font-semibold">Wireless Keyboard 0</h3>
+            <p>Product ID 1 · $202.11 each</p>
+        </section>
+
+        <!-- ! means "not". This one shows when the details are hidden. -->
+        <p x-show="!showDetails" class="italic text-gray-500">Details hidden.</p>
+    </article>
+</main>
+</body>
+</html>

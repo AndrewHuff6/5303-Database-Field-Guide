@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>03d – Purchase preview</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">Purchase preview</h1>
+
+    <!--
+        The state has grown, so it spans several lines. It's still one JavaScript object.
+        "get totalCents()" is a GETTER: it looks like a variable but is recalculated every time
+        it's read, so the total is always current.
+    -->
+    <article x-data="{
+        customerId: '',
+        quantity: 1,
+        priceCents: 20211,
+        get totalCents() {
+            return this.quantity * this.priceCents;
+        }
+    }" class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+
+        <div>
+            <label for="customer" class="block font-medium mb-1">Customer</label>
+            <select id="customer" x-model="customerId"
+                    class="w-full border border-gray-300 rounded px-3 py-2">
+                <option value="">Choose a customer</option>
+                <option value="1">Margaret Stroustrup</option>
+                <option value="2">Tim Ritchie</option>
+                <option value="3">Frances Berners</option>
+            </select>
+        </div>
+
+        <p>Product: <strong>Wireless Keyboard 0</strong> at $202.11</p>
+
+        <div>
+            <label for="quantity" class="block font-medium mb-1">Quantity</label>
+            <input id="quantity" type="number" min="1" max="10" x-model.number="quantity"
+                   class="w-32 border border-gray-300 rounded px-3 py-2">
+        </div>
+
+        <p x-show="customerId === ''" class="italic text-gray-500">Choose a customer to see the preview.</p>
+
+        <section x-show="customerId !== ''" class="bg-blue-50 border border-blue-200 rounded p-4">
+            <h3 class="font-semibold mb-1">Preview</h3>
+            <p>Customer ID: <span x-text="customerId"></span></p>
+            <p>
+                <span x-text="quantity"></span> × $202.11 =
+                <strong>$<span x-text="(totalCents / 100).toFixed(2)"></span></strong>
+            </p>
+        </section>
+    </article>
+</main>
+</body>
+</html>

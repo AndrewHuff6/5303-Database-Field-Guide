@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>12 – Search as you type</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<main class="max-w-2xl mx-auto p-6 space-y-4" x-data="productSearch()">
+    <h1 class="text-2xl font-bold">Search as you type</h1>
+
+    <section class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+        <!--
+            No form and no Search button any more.
+            @input.debounce.400ms: wait until the user has stopped typing for 400 ms, THEN search.
+            @keydown.escape: pressing Esc clears the search.
+        -->
+        <div class="relative">
+            <input type="search" x-model="query"
+                   @input.debounce.400ms="searchProducts()"
+                   @keydown.escape="clearSearch()"
+                   placeholder="Type at least 2 letters: lamp, kettle, key…"
+                   class="w-full border border-gray-300 rounded px-3 py-2 pr-24">
+            <!-- absolute right-3 top-2.5: pinned inside the right edge of the input -->
+            <span x-show="loading" class="absolute right-3 top-2.5 text-sm text-gray-500">Searching…</span>
+        </div>
+
+        <p x-show="tooShort" class="text-sm text-gray-500">Keep typing: at least 2 characters.</p>
+
+        <!-- Controls for the out-of-order experiment -->
+        <fieldset class="bg-gray-50 rounded p-4 text-sm space-y-2">
+            <legend class="font-medium">Experiment</legend>
+            <label class="flex items-center gap-2">
+                <input type="checkbox" x-model="slow"> Simulate a slow, unpredictable network (<code>slow=1</code>)
+            </label>
+            <div class="flex flex-wrap gap-4">
+                <span>Out-of-order protection:</span>
+                <label class="flex items-center gap-1"><input type="radio" value="none" x-model="protection"> None</label>
+                <label class="flex items-center gap-1"><input type="radio" value="counter" x-model="protection"> Request counter</label>
+                <label class="flex items-center gap-1"><input type="radio" value="abort" x-model="protection"> AbortController</label>
+            </div>
+        </fieldset>
+    </section>
+
+    <section class="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
+        <p x-show="error" x-text="error" class="text-red-700"></p>
+        <p x-show="searched !== null" class="text-sm text-gray-500 mb-2">
+            Results for “<strong x-text="searched"></strong>”
+            <!-- The out-of-order bug, made visible: the results shown aren't for the newest search. -->
+            <span x-show="!loading && searched !== latestTerm" class="text-red-700 font-medium">
+                (but the newest search was “<span x-text="latestTerm"></span>”!)
+            </span>
+        </p>
+        <p x-show="searched !== null && results.length === 0" class="text-gray-500">No matches.</p>
+        <ul class="divide-y divide-gray-100">
+            <template x-for="product in results" :key="product.id">
+                <li class="py-2 flex justify-between">
+                    <span x-text="product.name"></span>
+                    <span class="text-gray-500" x-text="`$${product.price}`"></span>
+                </li>
+            </template>
+        </ul>
+    </section>
+
+    <!-- What actually happened, in order -->
+    <section class="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
+        <div class="flex justify-between mb-2">
+            <h2 class="font-semibold">Request log</h2>
+            <button type="button" @click="log = []" class="text-sm text-blue-600 hover:underline">Clear</button>
+        </div>
+        <ol class="text-sm font-mono space-y-1">
+            <template x-for="(entry, i) in log" :key="i">
+                <li x-text="entry"></li>
+            </template>
+        </ol>
+    </section>
+</main>
+
+<script>
+    const MIN_LENGTH = 2;
+
+    function productSearch() {
+        return {
+            query: '',
+            searched: null,
+            results: [],
+            loading: false,
+            error: '',
+            log: [],
+
+            slow: false,
+            protection: 'none',
+
+            latestTerm: null, // the term of the newest request sent
+            requestCount: 0,  // for the counter strategy
+            controller: null, // for the AbortController strategy
+
+            get tooShort() {
+                const length = this.query.trim().length;
+                return length > 0 && length < MIN_LENGTH;
+            },
+
+            clearSearch() {
+                this.query = '';
+                this.cancelPending();
+            },
+
+            // Clear the results, and make any request still in flight unable to display.
+            cancelPending() {
+                this.requestCount++;
+                this.controller?.abort();
+                this.latestTerm = null;
+                this.searched = null;
+                this.results = [];
+                this.error = '';
+                this.loading = false;
+            },
+
+            async searchProducts() {
+                const term = this.query.trim();
+                this.error = '';
+
+                // Too short or empty: clear the results instead of searching.
+                if (term.length < MIN_LENGTH) {
+                    this.cancelPending();
+                    return;
+                }
+
+                // Strategy 1: number every request; only the newest may update the page.
+                const myNumber = ++this.requestCount;
+
+                // Strategy 2: cancel the previous request before starting a new one.
+                let signal;
+                if (this.protection === 'abort') {
+                    this.controller?.abort();
+                    this.controller = new AbortController();
+                    signal = this.controller.signal;
+                }
+
+                const params = new URLSearchParams({ q: term, limit: 10 });
+                if (this.slow) params.set('slow', '1');
+
+                this.latestTerm = term;
+                this.log.push(`#${myNumber} sent      "${term}"`);
+                this.loading = true;
+                try {
+                    const response = await fetch(`/api/products?${params}`, { signal });
+                    if (!response.ok) throw new Error(`The server answered ${response.status}`);
+                    const data = await response.json();
+
+                    if (this.protection === 'counter' && myNumber !== this.requestCount) {
+                        this.log.push(`#${myNumber} ignored   "${term}" (a newer request exists)`);
+                        return;
+                    }
+
+                    this.log.push(`#${myNumber} displayed "${term}"`);
+                    this.results = data;
+                    this.searched = term;
+                } catch (err) {
+                    if (err.name === 'AbortError') {
+                        this.log.push(`#${myNumber} aborted   "${term}"`);
+                        return;
+                    }
+                    this.error = `Search failed: ${err.message}`;
+                } finally {
+                    // Only the newest request decides when "Searching…" goes away.
+                    if (myNumber === this.requestCount) this.loading = false;
+                }
+            },
+        };
+    }
+</script>
+</body>
+</html>

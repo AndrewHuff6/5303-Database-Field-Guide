@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>02a – A basic form</title>
+</head>
+<body>
+<main>
+    <h1>Purchase form</h1>
+
+    <!--
+        action = where the browser sends the data (here: back to this same page)
+        method = how it sends it. GET puts the data in the address bar, so you can see it.
+    -->
+    <form action="" method="get">
+
+        <!-- A <label> wrapping an <input>: clicking the words focuses the box. -->
+        <label>
+            Customer ID
+            <input type="number" name="customer_id">
+        </label>
+
+        <!-- The other way to connect a label: for="..." matches the input's id="..." -->
+        <label for="product_id">Product ID</label>
+        <input type="number" id="product_id" name="product_id">
+
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" name="quantity" value="1">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p>
+        Fill the form in and press Submit. Look at the address bar: every
+        <code>name</code> appears as <code>name=value</code>.
+    </p>
+</main>
+</body>
+</html>
