@@ -13,7 +13,7 @@ from pymongo import MongoClient
 app = FastAPI()
 
 client = MongoClient("mongodb://localhost:27017")
-db = client["noidx_10k"]
+db = client["classroom"]
 
 
 # Route 1: read a local file and return it.
@@ -26,16 +26,12 @@ def get_countries():
 
 # Route 2: read documents from MongoDB.
 # The projection {"first_name": 1, ...} asks Mongo for only those fields.
-@app.get("/api/users")
-def get_users():
-    users = []
-    for doc in db.customers.find(
-        {}, {"first_name": 1, "last_name": 1, "email": 1}
-    ).limit(10):
-        users.append(
-            doc
-        )  # _id is an int in this database, so the doc is already JSON-friendly
-    return users
+@app.get("/api/mongo/purchases")
+def get_purchases():
+    purchases = []
+    for doc in db.purchases.find({}, {"amount": 1, "product_name": 1, "product_id": 1, "_id": 0}).sort("product_id", 1):
+        purchases.append(doc)  # _id is an int in this database, so the doc is already JSON-friendly
+    return purchases
 
 
 # Route 3: add a purchase to MongoDB.
