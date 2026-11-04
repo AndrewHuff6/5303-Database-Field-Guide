@@ -1,0 +1,357 @@
+{"_id":{"$oid":"6ae1429258c236caf1bbf46f"},"category_id":1,"parent_id":"","name":"Electronics","slug":"electronics","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf470"},"category_id":2,"parent_id":"","name":"Everything Else","slug":"everything-else","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf471"},"category_id":3,"parent_id":"","name":"Fashion","slug":"fashion","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf472"},"category_id":4,"parent_id":"","name":"Furniture","slug":"furniture","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf473"},"category_id":5,"parent_id":"","name":"Grocery","slug":"grocery","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf474"},"category_id":6,"parent_id":"","name":"Health & Beauty","slug":"health-beauty","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf475"},"category_id":7,"parent_id":"","name":"Home & Decor","slug":"home-decor","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf476"},"category_id":8,"parent_id":"","name":"Jewelry & Watches","slug":"jewelry-watches","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf477"},"category_id":9,"parent_id":"","name":"Kitchen & Dining","slug":"kitchen-dining","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf478"},"category_id":10,"parent_id":"","name":"Office & School","slug":"office-school","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf479"},"category_id":11,"parent_id":"","name":"Pet Supplies","slug":"pet-supplies","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf47a"},"category_id":12,"parent_id":"","name":"Phone & Device Accessories","slug":"phone-device-accessories","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf47b"},"category_id":13,"parent_id":"","name":"Sports & Outdoors","slug":"sports-outdoors","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf47c"},"category_id":15,"parent_id":"","name":"Toys & Games","slug":"toys-games","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf47d"},"category_id":16,"parent_id":1,"name":"Battery","slug":"battery","product_type":"BATTERY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf47e"},"category_id":17,"parent_id":1,"name":"Camera Bags And Cases","slug":"camera-bags-and-cases","product_type":"CAMERA_BAGS_AND_CASES"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf47f"},"category_id":18,"parent_id":1,"name":"Camera Other Accessories","slug":"camera-other-accessories","product_type":"CAMERA_OTHER_ACCESSORIES"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf480"},"category_id":14,"parent_id":"","name":"Tools, Auto & Home Improvement","slug":"tools-auto-home-improvement","product_type":""}
+{"_id":{"$oid":"6ae1429258c236caf1bbf481"},"category_id":19,"parent_id":1,"name":"Camera Support","slug":"camera-support","product_type":"CAMERA_SUPPORT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf482"},"category_id":20,"parent_id":1,"name":"Camera Tripod","slug":"camera-tripod","product_type":"CAMERA_TRIPOD"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf483"},"category_id":21,"parent_id":1,"name":"Ce Accessory","slug":"ce-accessory","product_type":"CE_ACCESSORY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf484"},"category_id":22,"parent_id":1,"name":"Ce Carrying Case Or Bag","slug":"ce-carrying-case-or-bag","product_type":"CE_CARRYING_CASE_OR_BAG"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf485"},"category_id":23,"parent_id":1,"name":"Charging Adapter","slug":"charging-adapter","product_type":"CHARGING_ADAPTER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf486"},"category_id":24,"parent_id":1,"name":"Computer Add On","slug":"computer-add-on","product_type":"COMPUTER_ADD_ON"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf487"},"category_id":25,"parent_id":1,"name":"Computer Component","slug":"computer-component","product_type":"COMPUTER_COMPONENT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf488"},"category_id":26,"parent_id":1,"name":"Computer Drive Or Storage","slug":"computer-drive-or-storage","product_type":"COMPUTER_DRIVE_OR_STORAGE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf489"},"category_id":27,"parent_id":1,"name":"Computer Input Device","slug":"computer-input-device","product_type":"COMPUTER_INPUT_DEVICE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf48a"},"category_id":28,"parent_id":1,"name":"Electric Fan","slug":"electric-fan","product_type":"ELECTRIC_FAN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf48b"},"category_id":29,"parent_id":1,"name":"Electronic Adapter","slug":"electronic-adapter","product_type":"ELECTRONIC_ADAPTER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf48c"},"category_id":30,"parent_id":1,"name":"Electronic Cable","slug":"electronic-cable","product_type":"ELECTRONIC_CABLE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf48d"},"category_id":32,"parent_id":1,"name":"Flash Drive","slug":"flash-drive","product_type":"FLASH_DRIVE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf48e"},"category_id":31,"parent_id":1,"name":"Electronic Device Docking Station","slug":"electronic-device-docking-station","product_type":"ELECTRONIC_DEVICE_DOCKING_STATION"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf48f"},"category_id":33,"parent_id":1,"name":"Flash Memory","slug":"flash-memory","product_type":"FLASH_MEMORY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf490"},"category_id":34,"parent_id":1,"name":"Flat Screen Display Mount","slug":"flat-screen-display-mount","product_type":"FLAT_SCREEN_DISPLAY_MOUNT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf491"},"category_id":35,"parent_id":1,"name":"Input Mouse","slug":"input-mouse","product_type":"INPUT_MOUSE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf492"},"category_id":36,"parent_id":1,"name":"Keyboards","slug":"keyboards","product_type":"KEYBOARDS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf493"},"category_id":37,"parent_id":1,"name":"Memory Reader","slug":"memory-reader","product_type":"MEMORY_READER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf494"},"category_id":39,"parent_id":1,"name":"Multiport Hub","slug":"multiport-hub","product_type":"MULTIPORT_HUB"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf495"},"category_id":38,"parent_id":1,"name":"Mouse Pad","slug":"mouse-pad","product_type":"MOUSE_PAD"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf496"},"category_id":40,"parent_id":1,"name":"Personal Computer","slug":"personal-computer","product_type":"PERSONAL_COMPUTER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf497"},"category_id":41,"parent_id":1,"name":"Portable Audio","slug":"portable-audio","product_type":"PORTABLE_AUDIO"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf498"},"category_id":42,"parent_id":1,"name":"Portable Electronic Device Cover","slug":"portable-electronic-device-cover","product_type":"PORTABLE_ELECTRONIC_DEVICE_COVER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf499"},"category_id":43,"parent_id":1,"name":"Portable Electronic Device Mount","slug":"portable-electronic-device-mount","product_type":"PORTABLE_ELECTRONIC_DEVICE_MOUNT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf49a"},"category_id":45,"parent_id":1,"name":"Power Strip","slug":"power-strip","product_type":"POWER_STRIP"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf49b"},"category_id":46,"parent_id":1,"name":"Radio","slug":"radio","product_type":"RADIO"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf49c"},"category_id":48,"parent_id":1,"name":"Sound And Recording Equipment","slug":"sound-and-recording-equipment","product_type":"SOUND_AND_RECORDING_EQUIPMENT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf49d"},"category_id":49,"parent_id":1,"name":"Speakers","slug":"speakers","product_type":"SPEAKERS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf49e"},"category_id":50,"parent_id":1,"name":"Television","slug":"television","product_type":"TELEVISION"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf49f"},"category_id":51,"parent_id":1,"name":"Thermoplastic Filament","slug":"thermoplastic-filament","product_type":"THERMOPLASTIC_FILAMENT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4a0"},"category_id":52,"parent_id":1,"name":"Two Way Radio","slug":"two-way-radio","product_type":"TWO_WAY_RADIO"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4a1"},"category_id":53,"parent_id":2,"name":"Biss","slug":"biss","product_type":"BISS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4a2"},"category_id":47,"parent_id":1,"name":"Security Electronics","slug":"security-electronics","product_type":"SECURITY_ELECTRONICS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4a3"},"category_id":54,"parent_id":2,"name":"Instrument Parts And Accessories","slug":"instrument-parts-and-accessories","product_type":"INSTRUMENT_PARTS_AND_ACCESSORIES"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4a4"},"category_id":55,"parent_id":2,"name":"Outbuilding","slug":"outbuilding","product_type":"OUTBUILDING"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4a5"},"category_id":56,"parent_id":2,"name":"Percussion Instruments","slug":"percussion-instruments","product_type":"PERCUSSION_INSTRUMENTS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4a6"},"category_id":57,"parent_id":3,"name":"Accessory","slug":"accessory","product_type":"ACCESSORY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4a7"},"category_id":58,"parent_id":3,"name":"Accessory Or Part Or Supply","slug":"accessory-or-part-or-supply","product_type":"ACCESSORY_OR_PART_OR_SUPPLY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4a8"},"category_id":59,"parent_id":3,"name":"Backpack","slug":"backpack","product_type":"BACKPACK"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4a9"},"category_id":60,"parent_id":3,"name":"Bag","slug":"bag","product_type":"BAG"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4aa"},"category_id":61,"parent_id":3,"name":"Boot","slug":"boot","product_type":"BOOT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4ab"},"category_id":62,"parent_id":3,"name":"Carrying Case Or Bag","slug":"carrying-case-or-bag","product_type":"CARRYING_CASE_OR_BAG"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4ac"},"category_id":63,"parent_id":3,"name":"Childrens Costume","slug":"childrens-costume","product_type":"CHILDRENS_COSTUME"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4ad"},"category_id":64,"parent_id":3,"name":"Earmuff","slug":"earmuff","product_type":"EARMUFF"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4ae"},"category_id":65,"parent_id":3,"name":"Eyewear","slug":"eyewear","product_type":"EYEWEAR"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4af"},"category_id":66,"parent_id":3,"name":"Handbag","slug":"handbag","product_type":"HANDBAG"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4b0"},"category_id":67,"parent_id":3,"name":"Hat","slug":"hat","product_type":"HAT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4b1"},"category_id":69,"parent_id":3,"name":"Luggage","slug":"luggage","product_type":"LUGGAGE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4b2"},"category_id":70,"parent_id":3,"name":"Overalls","slug":"overalls","product_type":"OVERALLS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4b3"},"category_id":71,"parent_id":3,"name":"Sandal","slug":"sandal","product_type":"SANDAL"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4b4"},"category_id":72,"parent_id":3,"name":"Shoes","slug":"shoes","product_type":"SHOES"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4b5"},"category_id":68,"parent_id":3,"name":"Leotard","slug":"leotard","product_type":"LEOTARD"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4b6"},"category_id":73,"parent_id":3,"name":"Suitcase","slug":"suitcase","product_type":"SUITCASE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4b7"},"category_id":74,"parent_id":3,"name":"Sunglasses","slug":"sunglasses","product_type":"SUNGLASSES"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4b8"},"category_id":75,"parent_id":3,"name":"Tote Bag","slug":"tote-bag","product_type":"TOTE_BAG"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4b9"},"category_id":76,"parent_id":3,"name":"Umbrella","slug":"umbrella","product_type":"UMBRELLA"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4ba"},"category_id":77,"parent_id":3,"name":"Wallet","slug":"wallet","product_type":"WALLET"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4bb"},"category_id":78,"parent_id":4,"name":"Bean Bag Chair","slug":"bean-bag-chair","product_type":"BEAN_BAG_CHAIR"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4bc"},"category_id":79,"parent_id":4,"name":"Bed","slug":"bed","product_type":"BED"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4bd"},"category_id":80,"parent_id":4,"name":"Bed Frame","slug":"bed-frame","product_type":"BED_FRAME"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4be"},"category_id":81,"parent_id":4,"name":"Bench","slug":"bench","product_type":"BENCH"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4bf"},"category_id":82,"parent_id":4,"name":"Cabinet","slug":"cabinet","product_type":"CABINET"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4c0"},"category_id":83,"parent_id":4,"name":"Chair","slug":"chair","product_type":"CHAIR"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4c1"},"category_id":84,"parent_id":4,"name":"Desk","slug":"desk","product_type":"DESK"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4c2"},"category_id":85,"parent_id":4,"name":"Dresser","slug":"dresser","product_type":"DRESSER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4c3"},"category_id":86,"parent_id":4,"name":"Furniture","slug":"furniture-other","product_type":"FURNITURE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4c4"},"category_id":87,"parent_id":4,"name":"Furniture Cover","slug":"furniture-cover","product_type":"FURNITURE_COVER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4c5"},"category_id":88,"parent_id":4,"name":"Furniture Liner","slug":"furniture-liner","product_type":"FURNITURE_LINER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4c6"},"category_id":98,"parent_id":5,"name":"Cake","slug":"cake","product_type":"CAKE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4c7"},"category_id":99,"parent_id":5,"name":"Coffee","slug":"coffee","product_type":"COFFEE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4c8"},"category_id":100,"parent_id":5,"name":"Cookie","slug":"cookie","product_type":"COOKIE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4c9"},"category_id":101,"parent_id":5,"name":"Cracker","slug":"cracker","product_type":"CRACKER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4ca"},"category_id":102,"parent_id":5,"name":"Dairy Based Butter","slug":"dairy-based-butter","product_type":"DAIRY_BASED_BUTTER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4cb"},"category_id":103,"parent_id":5,"name":"Dairy Based Cheese","slug":"dairy-based-cheese","product_type":"DAIRY_BASED_CHEESE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4cc"},"category_id":104,"parent_id":5,"name":"Dairy Based Cream","slug":"dairy-based-cream","product_type":"DAIRY_BASED_CREAM"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4cd"},"category_id":105,"parent_id":5,"name":"Dairy Based Drink","slug":"dairy-based-drink","product_type":"DAIRY_BASED_DRINK"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4ce"},"category_id":106,"parent_id":5,"name":"Dairy Based Ice Cream","slug":"dairy-based-ice-cream","product_type":"DAIRY_BASED_ICE_CREAM"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4cf"},"category_id":107,"parent_id":5,"name":"Drink Flavored","slug":"drink-flavored","product_type":"DRINK_FLAVORED"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4d0"},"category_id":108,"parent_id":5,"name":"Edible Oil Vegetable","slug":"edible-oil-vegetable","product_type":"EDIBLE_OIL_VEGETABLE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4d1"},"category_id":109,"parent_id":5,"name":"Fish","slug":"fish","product_type":"FISH"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4d2"},"category_id":110,"parent_id":5,"name":"Flour","slug":"flour","product_type":"FLOUR"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4d3"},"category_id":111,"parent_id":5,"name":"Fruit","slug":"fruit","product_type":"FRUIT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4d4"},"category_id":112,"parent_id":5,"name":"Fruit Snack","slug":"fruit-snack","product_type":"FRUIT_SNACK"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4d5"},"category_id":113,"parent_id":5,"name":"Grocery","slug":"grocery-other","product_type":"GROCERY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4d6"},"category_id":114,"parent_id":5,"name":"Herb","slug":"herb","product_type":"HERB"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4d7"},"category_id":115,"parent_id":5,"name":"Honey","slug":"honey","product_type":"HONEY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4d8"},"category_id":116,"parent_id":5,"name":"Juice And Juice Drink","slug":"juice-and-juice-drink","product_type":"JUICE_AND_JUICE_DRINK"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4d9"},"category_id":117,"parent_id":5,"name":"Legume","slug":"legume","product_type":"LEGUME"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4da"},"category_id":118,"parent_id":5,"name":"Milk Substitute","slug":"milk-substitute","product_type":"MILK_SUBSTITUTE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4db"},"category_id":92,"parent_id":4,"name":"Shelf","slug":"shelf","product_type":"SHELF"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4dc"},"category_id":94,"parent_id":4,"name":"Stool Seating","slug":"stool-seating","product_type":"STOOL_SEATING"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4dd"},"category_id":93,"parent_id":4,"name":"Sofa","slug":"sofa","product_type":"SOFA"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4de"},"category_id":95,"parent_id":4,"name":"Table","slug":"table","product_type":"TABLE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4df"},"category_id":90,"parent_id":4,"name":"Home Furniture And Decor","slug":"home-furniture-and-decor","product_type":"HOME_FURNITURE_AND_DECOR"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4e0"},"category_id":89,"parent_id":4,"name":"Headboard","slug":"headboard","product_type":"HEADBOARD"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4e1"},"category_id":91,"parent_id":4,"name":"Ottoman","slug":"ottoman","product_type":"OTTOMAN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4e2"},"category_id":96,"parent_id":5,"name":"Bread","slug":"bread","product_type":"BREAD"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4e3"},"category_id":97,"parent_id":5,"name":"Breakfast Cereal","slug":"breakfast-cereal","product_type":"BREAKFAST_CEREAL"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4e4"},"category_id":119,"parent_id":5,"name":"Noodle","slug":"noodle","product_type":"NOODLE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4e5"},"category_id":120,"parent_id":5,"name":"Nut Butter","slug":"nut-butter","product_type":"NUT_BUTTER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4e6"},"category_id":122,"parent_id":5,"name":"Packaged Soup And Stew","slug":"packaged-soup-and-stew","product_type":"PACKAGED_SOUP_AND_STEW"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4e7"},"category_id":121,"parent_id":5,"name":"Nuts","slug":"nuts","product_type":"NUTS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4e8"},"category_id":124,"parent_id":5,"name":"Popcorn","slug":"popcorn","product_type":"POPCORN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4e9"},"category_id":123,"parent_id":5,"name":"Pantry","slug":"pantry","product_type":"PANTRY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4ea"},"category_id":126,"parent_id":5,"name":"Pretzel","slug":"pretzel","product_type":"PRETZEL"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4eb"},"category_id":125,"parent_id":5,"name":"Poultry","slug":"poultry","product_type":"POULTRY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4ec"},"category_id":127,"parent_id":5,"name":"Rice Mix","slug":"rice-mix","product_type":"RICE_MIX"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4ed"},"category_id":128,"parent_id":5,"name":"Salad Dressing","slug":"salad-dressing","product_type":"SALAD_DRESSING"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4ee"},"category_id":129,"parent_id":5,"name":"Sauce","slug":"sauce","product_type":"SAUCE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4ef"},"category_id":130,"parent_id":5,"name":"Snack Chip And Crisp","slug":"snack-chip-and-crisp","product_type":"SNACK_CHIP_AND_CRISP"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4f0"},"category_id":132,"parent_id":5,"name":"Snack Mix","slug":"snack-mix","product_type":"SNACK_MIX"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4f1"},"category_id":131,"parent_id":5,"name":"Snack Food Bar","slug":"snack-food-bar","product_type":"SNACK_FOOD_BAR"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4f2"},"category_id":134,"parent_id":5,"name":"Tea","slug":"tea","product_type":"TEA"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4f3"},"category_id":133,"parent_id":5,"name":"Sugar","slug":"sugar","product_type":"SUGAR"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4f4"},"category_id":136,"parent_id":5,"name":"Vinegar","slug":"vinegar","product_type":"VINEGAR"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4f5"},"category_id":135,"parent_id":5,"name":"Vegetable","slug":"vegetable","product_type":"VEGETABLE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4f6"},"category_id":138,"parent_id":5,"name":"Wine","slug":"wine","product_type":"WINE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4f7"},"category_id":137,"parent_id":5,"name":"Water","slug":"water","product_type":"WATER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4f8"},"category_id":141,"parent_id":6,"name":"Astringent Substance","slug":"astringent-substance","product_type":"ASTRINGENT_SUBSTANCE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4f9"},"category_id":139,"parent_id":6,"name":"Abis Beauty","slug":"abis-beauty","product_type":"ABIS_BEAUTY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4fa"},"category_id":140,"parent_id":6,"name":"Abis Drugstore","slug":"abis-drugstore","product_type":"ABIS_DRUGSTORE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4fb"},"category_id":144,"parent_id":6,"name":"Beauty","slug":"beauty","product_type":"BEAUTY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4fc"},"category_id":142,"parent_id":6,"name":"Baby Product","slug":"baby-product","product_type":"BABY_PRODUCT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4fd"},"category_id":143,"parent_id":6,"name":"Bathwater Additive","slug":"bathwater-additive","product_type":"BATHWATER_ADDITIVE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4fe"},"category_id":147,"parent_id":6,"name":"Conditioner","slug":"conditioner","product_type":"CONDITIONER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf4ff"},"category_id":145,"parent_id":6,"name":"Body Deodorant","slug":"body-deodorant","product_type":"BODY_DEODORANT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf500"},"category_id":146,"parent_id":6,"name":"Body Positioner","slug":"body-positioner","product_type":"BODY_POSITIONER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf501"},"category_id":151,"parent_id":6,"name":"Essential Oil","slug":"essential-oil","product_type":"ESSENTIAL_OIL"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf502"},"category_id":148,"parent_id":6,"name":"Cosmetic Brush","slug":"cosmetic-brush","product_type":"COSMETIC_BRUSH"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf503"},"category_id":149,"parent_id":6,"name":"Cosmetic Case","slug":"cosmetic-case","product_type":"COSMETIC_CASE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf504"},"category_id":150,"parent_id":6,"name":"Earplug","slug":"earplug","product_type":"EARPLUG"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf505"},"category_id":155,"parent_id":6,"name":"Hair Styling Agent","slug":"hair-styling-agent","product_type":"HAIR_STYLING_AGENT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf506"},"category_id":152,"parent_id":6,"name":"Facial Tissue","slug":"facial-tissue","product_type":"FACIAL_TISSUE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf507"},"category_id":153,"parent_id":6,"name":"Hair Brush","slug":"hair-brush","product_type":"HAIR_BRUSH"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf508"},"category_id":154,"parent_id":6,"name":"Hair Comb","slug":"hair-comb","product_type":"HAIR_COMB"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf509"},"category_id":159,"parent_id":6,"name":"Medication","slug":"medication","product_type":"MEDICATION"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf50a"},"category_id":156,"parent_id":6,"name":"Health Personal Care","slug":"health-personal-care","product_type":"HEALTH_PERSONAL_CARE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf50b"},"category_id":157,"parent_id":6,"name":"Herbal Supplement","slug":"herbal-supplement","product_type":"HERBAL_SUPPLEMENT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf50c"},"category_id":158,"parent_id":6,"name":"Lip Color","slug":"lip-color","product_type":"LIP_COLOR"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf50d"},"category_id":162,"parent_id":6,"name":"Nail Polish","slug":"nail-polish","product_type":"NAIL_POLISH"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf50e"},"category_id":160,"parent_id":6,"name":"Mineral Supplement","slug":"mineral-supplement","product_type":"MINERAL_SUPPLEMENT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf50f"},"category_id":161,"parent_id":6,"name":"Mouthwash","slug":"mouthwash","product_type":"MOUTHWASH"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf510"},"category_id":165,"parent_id":6,"name":"Personal Care Appliance","slug":"personal-care-appliance","product_type":"PERSONAL_CARE_APPLIANCE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf511"},"category_id":163,"parent_id":6,"name":"Nutritional Supplement","slug":"nutritional-supplement","product_type":"NUTRITIONAL_SUPPLEMENT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf512"},"category_id":164,"parent_id":6,"name":"Orthopedic Brace","slug":"orthopedic-brace","product_type":"ORTHOPEDIC_BRACE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf513"},"category_id":167,"parent_id":6,"name":"Protein Supplement Powder","slug":"protein-supplement-powder","product_type":"PROTEIN_SUPPLEMENT_POWDER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf514"},"category_id":166,"parent_id":6,"name":"Personal Pill Dispenser","slug":"personal-pill-dispenser","product_type":"PERSONAL_PILL_DISPENSER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf515"},"category_id":168,"parent_id":6,"name":"Shampoo","slug":"shampoo","product_type":"SHAMPOO"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf516"},"category_id":169,"parent_id":6,"name":"Skin Cleaning Agent","slug":"skin-cleaning-agent","product_type":"SKIN_CLEANING_AGENT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf517"},"category_id":170,"parent_id":6,"name":"Skin Cleaning Wipe","slug":"skin-cleaning-wipe","product_type":"SKIN_CLEANING_WIPE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf518"},"category_id":171,"parent_id":6,"name":"Skin Moisturizer","slug":"skin-moisturizer","product_type":"SKIN_MOISTURIZER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf519"},"category_id":172,"parent_id":6,"name":"Sunscreen","slug":"sunscreen","product_type":"SUNSCREEN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf51a"},"category_id":173,"parent_id":6,"name":"Tooth Cleaning Agent","slug":"tooth-cleaning-agent","product_type":"TOOTH_CLEANING_AGENT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf51b"},"category_id":174,"parent_id":6,"name":"Vitamin","slug":"vitamin","product_type":"VITAMIN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf51c"},"category_id":175,"parent_id":6,"name":"Wound Dressing","slug":"wound-dressing","product_type":"WOUND_DRESSING"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf51d"},"category_id":176,"parent_id":7,"name":"Abis Lawn And Garden","slug":"abis-lawn-and-garden","product_type":"ABIS_LAWN_AND_GARDEN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf51e"},"category_id":177,"parent_id":7,"name":"Air Conditioner","slug":"air-conditioner","product_type":"AIR_CONDITIONER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf51f"},"category_id":178,"parent_id":7,"name":"Air Purifier","slug":"air-purifier","product_type":"AIR_PURIFIER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf520"},"category_id":181,"parent_id":7,"name":"Bottle Rack","slug":"bottle-rack","product_type":"BOTTLE_RACK"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf521"},"category_id":44,"parent_id":1,"name":"Portable Electronic Device Stand","slug":"portable-electronic-device-stand","product_type":"PORTABLE_ELECTRONIC_DEVICE_STAND"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf522"},"category_id":184,"parent_id":7,"name":"Cleaning Brush","slug":"cleaning-brush","product_type":"CLEANING_BRUSH"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf523"},"category_id":182,"parent_id":7,"name":"Caddy","slug":"caddy","product_type":"CADDY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf524"},"category_id":183,"parent_id":7,"name":"Candle","slug":"candle","product_type":"CANDLE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf525"},"category_id":179,"parent_id":7,"name":"Area Deodorizer","slug":"area-deodorizer","product_type":"AREA_DEODORIZER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf526"},"category_id":190,"parent_id":7,"name":"Dishwasher Detergent","slug":"dishwasher-detergent","product_type":"DISHWASHER_DETERGENT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf527"},"category_id":185,"parent_id":7,"name":"Clock","slug":"clock","product_type":"CLOCK"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf528"},"category_id":186,"parent_id":7,"name":"Clothes Hanger","slug":"clothes-hanger","product_type":"CLOTHES_HANGER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf529"},"category_id":187,"parent_id":7,"name":"Clothes Rack","slug":"clothes-rack","product_type":"CLOTHES_RACK"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf52a"},"category_id":188,"parent_id":7,"name":"Countertop Griddle Appliance","slug":"countertop-griddle-appliance","product_type":"COUNTERTOP_GRIDDLE_APPLIANCE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf52b"},"category_id":189,"parent_id":7,"name":"Curtain","slug":"curtain","product_type":"CURTAIN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf52c"},"category_id":180,"parent_id":7,"name":"Basket","slug":"basket","product_type":"BASKET"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf52d"},"category_id":197,"parent_id":7,"name":"Home Mirror","slug":"home-mirror","product_type":"HOME_MIRROR"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf52e"},"category_id":191,"parent_id":7,"name":"Figurine","slug":"figurine","product_type":"FIGURINE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf52f"},"category_id":192,"parent_id":7,"name":"Flat Sheet","slug":"flat-sheet","product_type":"FLAT_SHEET"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf530"},"category_id":193,"parent_id":7,"name":"Home","slug":"home","product_type":"HOME"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf531"},"category_id":210,"parent_id":7,"name":"Planter","slug":"planter","product_type":"PLANTER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf532"},"category_id":194,"parent_id":7,"name":"Home Bed And Bath","slug":"home-bed-and-bath","product_type":"HOME_BED_AND_BATH"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf533"},"category_id":195,"parent_id":7,"name":"Home Lighting Accessory","slug":"home-lighting-accessory","product_type":"HOME_LIGHTING_ACCESSORY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf534"},"category_id":196,"parent_id":7,"name":"Home Lighting And Lamps","slug":"home-lighting-and-lamps","product_type":"HOME_LIGHTING_AND_LAMPS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf535"},"category_id":203,"parent_id":7,"name":"Light Bulb","slug":"light-bulb","product_type":"LIGHT_BULB"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf536"},"category_id":198,"parent_id":7,"name":"Humidifier","slug":"humidifier","product_type":"HUMIDIFIER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf537"},"category_id":199,"parent_id":7,"name":"Incense","slug":"incense","product_type":"INCENSE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf538"},"category_id":200,"parent_id":7,"name":"Lamp","slug":"lamp","product_type":"LAMP"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf539"},"category_id":201,"parent_id":7,"name":"Laundry Detergent","slug":"laundry-detergent","product_type":"LAUNDRY_DETERGENT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf53a"},"category_id":202,"parent_id":7,"name":"Laundry Hamper","slug":"laundry-hamper","product_type":"LAUNDRY_HAMPER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf53b"},"category_id":206,"parent_id":7,"name":"Major Home Appliances","slug":"major-home-appliances","product_type":"MAJOR_HOME_APPLIANCES"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf53c"},"category_id":204,"parent_id":7,"name":"Light Fixture","slug":"light-fixture","product_type":"LIGHT_FIXTURE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf53d"},"category_id":205,"parent_id":7,"name":"Light Source","slug":"light-source","product_type":"LIGHT_SOURCE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf53e"},"category_id":207,"parent_id":7,"name":"Outdoor Living","slug":"outdoor-living","product_type":"OUTDOOR_LIVING"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf53f"},"category_id":209,"parent_id":7,"name":"Pillow","slug":"pillow","product_type":"PILLOW"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf540"},"category_id":211,"parent_id":7,"name":"Pot Holder","slug":"pot-holder","product_type":"POT_HOLDER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf541"},"category_id":208,"parent_id":7,"name":"Picture Frame","slug":"picture-frame","product_type":"PICTURE_FRAME"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf542"},"category_id":212,"parent_id":7,"name":"Pump Dispenser","slug":"pump-dispenser","product_type":"PUMP_DISPENSER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf543"},"category_id":213,"parent_id":7,"name":"Rug","slug":"rug","product_type":"RUG"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf544"},"category_id":214,"parent_id":7,"name":"Showerhead","slug":"showerhead","product_type":"SHOWERHEAD"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf545"},"category_id":215,"parent_id":7,"name":"Storage Bag","slug":"storage-bag","product_type":"STORAGE_BAG"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf546"},"category_id":217,"parent_id":7,"name":"Storage Hook","slug":"storage-hook","product_type":"STORAGE_HOOK"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf547"},"category_id":216,"parent_id":7,"name":"Storage Box","slug":"storage-box","product_type":"STORAGE_BOX"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf548"},"category_id":218,"parent_id":7,"name":"Storage Rack","slug":"storage-rack","product_type":"STORAGE_RACK"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf549"},"category_id":219,"parent_id":7,"name":"String Light","slug":"string-light","product_type":"STRING_LIGHT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf54a"},"category_id":220,"parent_id":7,"name":"Toilet Paper Holder","slug":"toilet-paper-holder","product_type":"TOILET_PAPER_HOLDER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf54b"},"category_id":221,"parent_id":7,"name":"Toothbrush Holder","slug":"toothbrush-holder","product_type":"TOOTHBRUSH_HOLDER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf54c"},"category_id":222,"parent_id":7,"name":"Towel Holder","slug":"towel-holder","product_type":"TOWEL_HOLDER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf54d"},"category_id":223,"parent_id":7,"name":"Trash Can","slug":"trash-can","product_type":"TRASH_CAN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf54e"},"category_id":224,"parent_id":7,"name":"Vase","slug":"vase","product_type":"VASE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf54f"},"category_id":225,"parent_id":7,"name":"Vine","slug":"vine","product_type":"VINE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf550"},"category_id":226,"parent_id":7,"name":"Wall Art","slug":"wall-art","product_type":"WALL_ART"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf551"},"category_id":227,"parent_id":7,"name":"Washer Dryer Combination","slug":"washer-dryer-combination","product_type":"WASHER_DRYER_COMBINATION"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf552"},"category_id":228,"parent_id":7,"name":"Waste Bag","slug":"waste-bag","product_type":"WASTE_BAG"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf553"},"category_id":229,"parent_id":7,"name":"Window Shade","slug":"window-shade","product_type":"WINDOW_SHADE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf554"},"category_id":230,"parent_id":8,"name":"Bracelet","slug":"bracelet","product_type":"BRACELET"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf555"},"category_id":231,"parent_id":8,"name":"Charm","slug":"charm","product_type":"CHARM"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf556"},"category_id":232,"parent_id":8,"name":"Earring","slug":"earring","product_type":"EARRING"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf557"},"category_id":233,"parent_id":8,"name":"Fashionearring","slug":"fashionearring","product_type":"FASHIONEARRING"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf558"},"category_id":235,"parent_id":8,"name":"Fashionring","slug":"fashionring","product_type":"FASHIONRING"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf559"},"category_id":236,"parent_id":8,"name":"Fine Earrings","slug":"fineearring","product_type":"FINEEARRING"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf55a"},"category_id":234,"parent_id":8,"name":"Fashionnecklacebraceletanklet","slug":"fashionnecklacebraceletanklet","product_type":"FASHIONNECKLACEBRACELETANKLET"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf55b"},"category_id":237,"parent_id":8,"name":"Fine Jewelry","slug":"fineother","product_type":"FINEOTHER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf55c"},"category_id":239,"parent_id":8,"name":"Fine Rings","slug":"finering","product_type":"FINERING"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf55d"},"category_id":240,"parent_id":8,"name":"Jewelry Set","slug":"jewelry-set","product_type":"JEWELRY_SET"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf55e"},"category_id":241,"parent_id":8,"name":"Jewelry Storage","slug":"jewelry-storage","product_type":"JEWELRY_STORAGE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf55f"},"category_id":238,"parent_id":8,"name":"Fine Necklaces, Bracelets & Anklets","slug":"finenecklacebraceletanklet","product_type":"FINENECKLACEBRACELETANKLET"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf560"},"category_id":242,"parent_id":8,"name":"Necklace","slug":"necklace","product_type":"NECKLACE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf561"},"category_id":243,"parent_id":8,"name":"Ring","slug":"ring","product_type":"RING"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf562"},"category_id":244,"parent_id":8,"name":"Watch","slug":"watch","product_type":"WATCH"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf563"},"category_id":245,"parent_id":9,"name":"Abis Kitchen","slug":"abis-kitchen","product_type":"ABIS_KITCHEN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf564"},"category_id":246,"parent_id":9,"name":"Baking Pan","slug":"baking-pan","product_type":"BAKING_PAN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf565"},"category_id":247,"parent_id":9,"name":"Bottle","slug":"bottle","product_type":"BOTTLE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf566"},"category_id":248,"parent_id":9,"name":"Can Opener","slug":"can-opener","product_type":"CAN_OPENER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf567"},"category_id":249,"parent_id":9,"name":"Coffee Maker","slug":"coffee-maker","product_type":"COFFEE_MAKER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf568"},"category_id":250,"parent_id":9,"name":"Countertop Oven","slug":"countertop-oven","product_type":"COUNTERTOP_OVEN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf569"},"category_id":251,"parent_id":9,"name":"Dishware Bowl","slug":"dishware-bowl","product_type":"DISHWARE_BOWL"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf56a"},"category_id":253,"parent_id":9,"name":"Dishware Plate","slug":"dishware-plate","product_type":"DISHWARE_PLATE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf56b"},"category_id":252,"parent_id":9,"name":"Dishware Place Setting","slug":"dishware-place-setting","product_type":"DISHWARE_PLACE_SETTING"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf56c"},"category_id":254,"parent_id":9,"name":"Drinking Cup","slug":"drinking-cup","product_type":"DRINKING_CUP"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf56d"},"category_id":255,"parent_id":9,"name":"Dutch Ovens","slug":"dutch-ovens","product_type":"DUTCH_OVENS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf56e"},"category_id":256,"parent_id":9,"name":"Electric Water Boiler","slug":"electric-water-boiler","product_type":"ELECTRIC_WATER_BOILER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf56f"},"category_id":257,"parent_id":9,"name":"Flatware","slug":"flatware","product_type":"FLATWARE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf570"},"category_id":258,"parent_id":9,"name":"Food Blender","slug":"food-blender","product_type":"FOOD_BLENDER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf571"},"category_id":259,"parent_id":9,"name":"Food Preparation Mold","slug":"food-preparation-mold","product_type":"FOOD_PREPARATION_MOLD"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf572"},"category_id":260,"parent_id":9,"name":"Food Service Supply","slug":"food-service-supply","product_type":"FOOD_SERVICE_SUPPLY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf573"},"category_id":261,"parent_id":9,"name":"Food Slicer","slug":"food-slicer","product_type":"FOOD_SLICER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf574"},"category_id":262,"parent_id":9,"name":"Food Storage Bag","slug":"food-storage-bag","product_type":"FOOD_STORAGE_BAG"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf575"},"category_id":263,"parent_id":9,"name":"Jar","slug":"jar","product_type":"JAR"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf576"},"category_id":264,"parent_id":9,"name":"Juicer","slug":"juicer","product_type":"JUICER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf577"},"category_id":265,"parent_id":9,"name":"Kitchen","slug":"kitchen","product_type":"KITCHEN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf578"},"category_id":266,"parent_id":9,"name":"Kitchen Knife","slug":"kitchen-knife","product_type":"KITCHEN_KNIFE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf579"},"category_id":267,"parent_id":9,"name":"Kitchen Tools","slug":"kitchen-tools","product_type":"KITCHEN_TOOLS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf57a"},"category_id":268,"parent_id":9,"name":"Meal Holder","slug":"meal-holder","product_type":"MEAL_HOLDER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf57b"},"category_id":269,"parent_id":9,"name":"Microwave Oven","slug":"microwave-oven","product_type":"MICROWAVE_OVEN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf57c"},"category_id":270,"parent_id":9,"name":"Placemat","slug":"placemat","product_type":"PLACEMAT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf57d"},"category_id":271,"parent_id":9,"name":"Pressure Cooker","slug":"pressure-cooker","product_type":"PRESSURE_COOKER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf57e"},"category_id":272,"parent_id":9,"name":"Saute Fry Pan","slug":"saute-fry-pan","product_type":"SAUTE_FRY_PAN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf57f"},"category_id":273,"parent_id":9,"name":"Utility Knife","slug":"utility-knife","product_type":"UTILITY_KNIFE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf580"},"category_id":274,"parent_id":9,"name":"Water Purification Unit","slug":"water-purification-unit","product_type":"WATER_PURIFICATION_UNIT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf581"},"category_id":275,"parent_id":10,"name":"Envelope","slug":"envelope","product_type":"ENVELOPE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf582"},"category_id":276,"parent_id":10,"name":"File Folder","slug":"file-folder","product_type":"FILE_FOLDER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf583"},"category_id":277,"parent_id":10,"name":"Ink Or Toner","slug":"ink-or-toner","product_type":"INK_OR_TONER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf584"},"category_id":278,"parent_id":10,"name":"Lab Supply","slug":"lab-supply","product_type":"LAB_SUPPLY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf585"},"category_id":279,"parent_id":10,"name":"Label","slug":"label","product_type":"LABEL"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf586"},"category_id":280,"parent_id":10,"name":"Marking Pen","slug":"marking-pen","product_type":"MARKING_PEN"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf587"},"category_id":281,"parent_id":10,"name":"Office Electronics","slug":"office-electronics","product_type":"OFFICE_ELECTRONICS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf588"},"category_id":282,"parent_id":10,"name":"Office Products","slug":"office-products","product_type":"OFFICE_PRODUCTS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf589"},"category_id":283,"parent_id":10,"name":"Paper Product","slug":"paper-product","product_type":"PAPER_PRODUCT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf58a"},"category_id":284,"parent_id":10,"name":"Pinboard","slug":"pinboard","product_type":"PINBOARD"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf58b"},"category_id":285,"parent_id":10,"name":"Print Copy Paper","slug":"print-copy-paper","product_type":"PRINT_COPY_PAPER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf58c"},"category_id":286,"parent_id":10,"name":"Scissors","slug":"scissors","product_type":"SCISSORS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf58d"},"category_id":287,"parent_id":10,"name":"Self Stick Note","slug":"self-stick-note","product_type":"SELF_STICK_NOTE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf58e"},"category_id":290,"parent_id":10,"name":"Storage Binder","slug":"storage-binder","product_type":"STORAGE_BINDER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf58f"},"category_id":288,"parent_id":10,"name":"Stapler","slug":"stapler","product_type":"STAPLER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf590"},"category_id":289,"parent_id":10,"name":"Sticker Decal","slug":"sticker-decal","product_type":"STICKER_DECAL"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf591"},"category_id":294,"parent_id":11,"name":"Pet Pest Control","slug":"pet-pest-control","product_type":"PET_PEST_CONTROL"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf592"},"category_id":292,"parent_id":10,"name":"Writing Board","slug":"writing-board","product_type":"WRITING_BOARD"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf593"},"category_id":291,"parent_id":10,"name":"Teaching Equipment","slug":"teaching-equipment","product_type":"TEACHING_EQUIPMENT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf594"},"category_id":293,"parent_id":10,"name":"Writing Instrument","slug":"writing-instrument","product_type":"WRITING_INSTRUMENT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf595"},"category_id":298,"parent_id":12,"name":"Cellular Phone Case","slug":"cellular-phone-case","product_type":"CELLULAR_PHONE_CASE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf596"},"category_id":300,"parent_id":12,"name":"Microphone","slug":"microphone","product_type":"MICROPHONE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf597"},"category_id":295,"parent_id":11,"name":"Pet Supplies","slug":"pet-supplies-other","product_type":"PET_SUPPLIES"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf598"},"category_id":299,"parent_id":12,"name":"Headphones","slug":"headphones","product_type":"HEADPHONES"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf599"},"category_id":296,"parent_id":11,"name":"Pet Toy","slug":"pet-toy","product_type":"PET_TOY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf59a"},"category_id":297,"parent_id":12,"name":"Cellular Phone","slug":"cellular-phone","product_type":"CELLULAR_PHONE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf59b"},"category_id":303,"parent_id":12,"name":"Screen Protector","slug":"screen-protector","product_type":"SCREEN_PROTECTOR"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf59c"},"category_id":301,"parent_id":12,"name":"Phone","slug":"phone","product_type":"PHONE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf59d"},"category_id":302,"parent_id":12,"name":"Phone Accessory","slug":"phone-accessory","product_type":"PHONE_ACCESSORY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf59e"},"category_id":305,"parent_id":13,"name":"Exercise Band","slug":"exercise-band","product_type":"EXERCISE_BAND"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf59f"},"category_id":304,"parent_id":12,"name":"Wireless Accessory","slug":"wireless-accessory","product_type":"WIRELESS_ACCESSORY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5a0"},"category_id":310,"parent_id":13,"name":"Outdoor Recreation Product","slug":"outdoor-recreation-product","product_type":"OUTDOOR_RECREATION_PRODUCT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5a1"},"category_id":306,"parent_id":13,"name":"Exercise Mat","slug":"exercise-mat","product_type":"EXERCISE_MAT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5a2"},"category_id":307,"parent_id":13,"name":"Freestanding Shelter","slug":"freestanding-shelter","product_type":"FREESTANDING_SHELTER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5a3"},"category_id":317,"parent_id":13,"name":"Water Flotation Device","slug":"water-flotation-device","product_type":"WATER_FLOTATION_DEVICE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5a4"},"category_id":325,"parent_id":14,"name":"Building Material","slug":"building-material","product_type":"BUILDING_MATERIAL"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5a5"},"category_id":326,"parent_id":14,"name":"Cargo Strap","slug":"cargo-strap","product_type":"CARGO_STRAP"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5a6"},"category_id":327,"parent_id":14,"name":"Cleaning Agent","slug":"cleaning-agent","product_type":"CLEANING_AGENT"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5a7"},"category_id":328,"parent_id":14,"name":"Drill Bits","slug":"drill-bits","product_type":"DRILL_BITS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5a8"},"category_id":329,"parent_id":14,"name":"Electromechanical Gauge","slug":"electromechanical-gauge","product_type":"ELECTROMECHANICAL_GAUGE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5a9"},"category_id":330,"parent_id":14,"name":"Faucet","slug":"faucet","product_type":"FAUCET"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5aa"},"category_id":331,"parent_id":14,"name":"Hardware","slug":"hardware","product_type":"HARDWARE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5ab"},"category_id":332,"parent_id":14,"name":"Hardware Handle","slug":"hardware-handle","product_type":"HARDWARE_HANDLE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5ac"},"category_id":333,"parent_id":14,"name":"Hardware Tubing","slug":"hardware-tubing","product_type":"HARDWARE_TUBING"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5ad"},"category_id":334,"parent_id":14,"name":"Janitorial Supply","slug":"janitorial-supply","product_type":"JANITORIAL_SUPPLY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5ae"},"category_id":335,"parent_id":14,"name":"Lock","slug":"lock","product_type":"LOCK"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5af"},"category_id":336,"parent_id":14,"name":"Mechanical Components","slug":"mechanical-components","product_type":"MECHANICAL_COMPONENTS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5b0"},"category_id":337,"parent_id":14,"name":"Multitool","slug":"multitool","product_type":"MULTITOOL"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5b1"},"category_id":338,"parent_id":14,"name":"Pliers","slug":"pliers","product_type":"PLIERS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5b2"},"category_id":339,"parent_id":14,"name":"Plumbing Fixture","slug":"plumbing-fixture","product_type":"PLUMBING_FIXTURE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5b3"},"category_id":340,"parent_id":14,"name":"Power Supplies Or Protection","slug":"power-supplies-or-protection","product_type":"POWER_SUPPLIES_OR_PROTECTION"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5b4"},"category_id":341,"parent_id":14,"name":"Safe","slug":"safe","product_type":"SAFE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5b5"},"category_id":342,"parent_id":14,"name":"Safety Glasses","slug":"safety-glasses","product_type":"SAFETY_GLASSES"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5b6"},"category_id":343,"parent_id":14,"name":"Safety Supply","slug":"safety-supply","product_type":"SAFETY_SUPPLY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5b7"},"category_id":344,"parent_id":14,"name":"Screwdriver","slug":"screwdriver","product_type":"SCREWDRIVER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5b8"},"category_id":311,"parent_id":13,"name":"Portable Stove","slug":"portable-stove","product_type":"PORTABLE_STOVE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5b9"},"category_id":312,"parent_id":13,"name":"Punching Bag","slug":"punching-bag","product_type":"PUNCHING_BAG"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5ba"},"category_id":347,"parent_id":14,"name":"Utility Cart Wagon","slug":"utility-cart-wagon","product_type":"UTILITY_CART_WAGON"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5bb"},"category_id":348,"parent_id":14,"name":"Vacuum Cleaner","slug":"vacuum-cleaner","product_type":"VACUUM_CLEANER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5bc"},"category_id":349,"parent_id":14,"name":"Vacuum Sealer Machine","slug":"vacuum-sealer-machine","product_type":"VACUUM_SEALER_MACHINE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5bd"},"category_id":350,"parent_id":14,"name":"Vehicle Interior Shade","slug":"vehicle-interior-shade","product_type":"VEHICLE_INTERIOR_SHADE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5be"},"category_id":351,"parent_id":14,"name":"Wheel","slug":"wheel","product_type":"WHEEL"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5bf"},"category_id":352,"parent_id":14,"name":"Wrench","slug":"wrench","product_type":"WRENCH"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5c0"},"category_id":353,"parent_id":15,"name":"Puzzles","slug":"puzzles","product_type":"PUZZLES"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5c1"},"category_id":313,"parent_id":13,"name":"Recreation Ball","slug":"recreation-ball","product_type":"RECREATION_BALL"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5c2"},"category_id":314,"parent_id":13,"name":"Sporting Goods","slug":"sporting-goods","product_type":"SPORTING_GOODS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5c3"},"category_id":315,"parent_id":13,"name":"Technical Sport Shoe","slug":"technical-sport-shoe","product_type":"TECHNICAL_SPORT_SHOE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5c4"},"category_id":316,"parent_id":13,"name":"Transport Rack","slug":"transport-rack","product_type":"TRANSPORT_RACK"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5c5"},"category_id":309,"parent_id":13,"name":"Muscle Roller","slug":"muscle-roller","product_type":"MUSCLE_ROLLER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5c6"},"category_id":323,"parent_id":14,"name":"Auto Part","slug":"auto-part","product_type":"AUTO_PART"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5c7"},"category_id":318,"parent_id":14,"name":"Agricultural Supplies","slug":"agricultural-supplies","product_type":"AGRICULTURAL_SUPPLIES"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5c8"},"category_id":319,"parent_id":14,"name":"Air Pump","slug":"air-pump","product_type":"AIR_PUMP"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5c9"},"category_id":324,"parent_id":14,"name":"Broom","slug":"broom","product_type":"BROOM"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5ca"},"category_id":320,"parent_id":14,"name":"Auto Accessory","slug":"auto-accessory","product_type":"AUTO_ACCESSORY"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5cb"},"category_id":345,"parent_id":14,"name":"Steering Wheel Cover","slug":"steering-wheel-cover","product_type":"STEERING_WHEEL_COVER"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5cc"},"category_id":308,"parent_id":13,"name":"Golf Club Bag","slug":"golf-club-bag","product_type":"GOLF_CLUB_BAG"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5cd"},"category_id":321,"parent_id":14,"name":"Auto Chemical","slug":"auto-chemical","product_type":"AUTO_CHEMICAL"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5ce"},"category_id":346,"parent_id":14,"name":"Tools","slug":"tools","product_type":"TOOLS"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5cf"},"category_id":322,"parent_id":14,"name":"Auto Oil","slug":"auto-oil","product_type":"AUTO_OIL"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5d0"},"category_id":354,"parent_id":15,"name":"Toy Building Block","slug":"toy-building-block","product_type":"TOY_BUILDING_BLOCK"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5d1"},"category_id":357,"parent_id":15,"name":"Toys And Games","slug":"toys-and-games","product_type":"TOYS_AND_GAMES"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5d2"},"category_id":355,"parent_id":15,"name":"Toy Figure","slug":"toy-figure","product_type":"TOY_FIGURE"}
+{"_id":{"$oid":"6ae1429258c236caf1bbf5d3"},"category_id":356,"parent_id":15,"name":"Toy Slime","slug":"toy-slime","product_type":"TOY_SLIME"}
