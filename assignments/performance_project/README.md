@@ -1,3 +1,22 @@
+<details>
+<summary>⚙️ Metadata (auto-managed by <code>readmees</code> — edit values, not structure)</summary>
+
+```yaml
+is_due: true
+id: A02-performance_project
+name: A02-performance_project
+title: 'Assignment: Comparing Sqlite and DuckDB'
+description: Using performance tool to benchmark different db's
+category: Assignments
+date_due:
+  month: '12'
+  day: '04'
+  year: 2026
+  hour: 16
+```
+
+</details>
+
 # 5303 Database Field Guide
 
 Five database engines, one dataset, one set of questions. You load the same
@@ -25,33 +44,33 @@ by column), [03_postgres](engines/03_postgres/) (the first server),
 Each engine unit has the same nine sections, so you always know where you
 are:
 
-| #  | Section              | Question                                             |
-| -- | -------------------- | ---------------------------------------------------- |
-| 01 | Why it exists        | What was it built for, and what does it give up?     |
-| 02 | Install & verify     | Can I run it and prove it's running?                 |
-| 03 | Connect three ways   | The same "hello" from the CLI, QueryMux, and Python  |
-| 04 | Model the data       | How does `store` want to look in this engine?        |
-| 05 | Load it              | Get the data in, reproducibly                        |
-| 06 | Run the query catalog | Q01–Q15 in this engine's language                   |
-| 07 | Explain & measure    | What did it do, and how long did it take?            |
-| 08 | Concurrency & load   | How does it behave when many requests arrive at once? |
-| 09 | When to choose it    | Yes or no on standard scenarios, citing your numbers |
+| #   | Section               | Question                                              |
+| --- | --------------------- | ----------------------------------------------------- |
+| 01  | Why it exists         | What was it built for, and what does it give up?      |
+| 02  | Install & verify      | Can I run it and prove it's running?                  |
+| 03  | Connect three ways    | The same "hello" from the CLI, QueryMux, and Python   |
+| 04  | Model the data        | How does `store` want to look in this engine?         |
+| 05  | Load it               | Get the data in, reproducibly                         |
+| 06  | Run the query catalog | Q01–Q15 in this engine's language                     |
+| 07  | Explain & measure     | What did it do, and how long did it take?             |
+| 08  | Concurrency & load    | How does it behave when many requests arrive at once? |
+| 09  | When to choose it     | Yes or no on standard scenarios, citing your numbers  |
 
 The setup steps hand you commands. The later sections ask you for something
 you can't paste: a prediction, a number, an explanation, or a decision.
 
 ## What's where
 
-| Folder / file                        | Holds                                                                     |
-| ------------------------------------ | ------------------------------------------------------------------------- |
-| [setup/](setup/)                     | Install once: Git, Python, Docker, QueryMux, an editor                    |
-| [engines/](engines/)                 | One folder per engine, nine sections each                                 |
-| [tracks/](tracks/)                   | Spatial, vector, and distributed comparisons                              |
-| [lab/](lab/README.md)                | The measurement API, driver, load test, fairness rules, FINDINGS template |
-| [datasets/](datasets/README.md)      | The `store` data, its query catalog, the generator, and Armageddon        |
-| [reference/](reference/README.md)    | Look-it-up material: the concept map, patterns, topics, naming conventions |
-| [assignments/](assignments/)         | Assignments and the final project                                         |
-| [STRUCTURE.md](STRUCTURE.md)         | Naming conventions and where new files go                                 |
+| Folder / file                     | Holds                                                                      |
+| --------------------------------- | -------------------------------------------------------------------------- |
+| [setup/](setup/)                  | Install once: Git, Python, Docker, QueryMux, an editor                     |
+| [engines/](engines/)              | One folder per engine, nine sections each                                  |
+| [tracks/](tracks/)                | Spatial, vector, and distributed comparisons                               |
+| [lab/](lab/README.md)             | The measurement API, driver, load test, fairness rules, FINDINGS template  |
+| [datasets/](datasets/README.md)   | The `store` data, its query catalog, the generator, and Armageddon         |
+| [reference/](reference/README.md) | Look-it-up material: the concept map, patterns, topics, naming conventions |
+| [assignments/](assignments/)      | Assignments and the final project                                          |
+| [STRUCTURE.md](STRUCTURE.md)      | Naming conventions and where new files go                                  |
 
 ## Quick start
 

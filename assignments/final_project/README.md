@@ -1,6 +1,22 @@
-# Final Project — Choose the Right Database
+<details>
+<summary>⚙️ Metadata (auto-managed by <code>readmees</code> — edit values, not structure)</summary>
 
-Scenario cards (dataset + workload + constraints). Pick engines, prototype,
-measure, and justify the choice with your own numbers.
+```yaml
+is_due: true
+id: A01-final_project
+name: A01-final_project
+title: Final Project
+description: Choosing the Right Database
+category: Assignments
+date_due:
+  month: '12'
+  day: '04'
+  year: 2026
+  hour: 16
+```
 
-_Status: stub — content to be added._
+</details>
+
+## Final Project
+
+#### TBD

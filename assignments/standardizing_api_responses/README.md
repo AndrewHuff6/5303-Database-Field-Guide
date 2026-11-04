@@ -1,13 +1,21 @@
----
-title: "Assignment: Standardizing REST API Responses"
-course: "5303 Advanced Database Systems"
-topic: "REST APIs, MongoDB, Response Models, and Pagination"
-language: "Python"
-framework: "FastAPI"
-database: "MongoDB"
-difficulty: "Intermediate"
-points: 100
----
+<details>
+<summary>⚙️ Metadata (auto-managed by <code>readmees</code> — edit values, not structure)</summary>
+
+```yaml
+is_due: true
+id: A03-standardizing_api_responses
+name: A03-standardizing_api_responses
+title: 'Assignment: Standardizing REST API Responses'
+description: REST APIs, MongoDB, Response Models, and Pagination
+category: Assignments
+date_due:
+  month: '11'
+  day: '06'
+  year: 2026
+  hour: 16
+```
+
+</details>
 
 # Assignment: Standardizing REST API Responses
 

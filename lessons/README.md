@@ -8,28 +8,25 @@ hard-coded HTML  →  JavaScript arrays  →  FastAPI (hard-coded Python lists)
                  →  FastAPI + MongoDB  →  FastAPI + MongoDB + Redis cache
 ```
 
-| Lesson | Folder                     | Focus                                   | Needs a server? |
-| ------ | -------------------------- | --------------------------------------- | --------------- |
-| 00     | `00-minimal-api`           | Preview: the smallest FastAPI app       | FastAPI + Mongo |
-| 01     | `01-the-data`              | The `noidx_10k` database and the goal   | Mongo (mongosh) |
-| 02     | `02-html-forms`            | Forms, labels, inputs, selects          | No              |
-| 03     | `03-alpine-state`          | `x-data`, `x-text`, `x-model`, `x-show` | No              |
-| 04     | `04-alpine-events`         | `@click`, `@input`, `@change`, `@submit.prevent` | No     |
-| 05     | `05-local-arrays`          | `x-for`, `:key`, `:value`, `:disabled`  | No              |
-| 06     | `06-first-fastapi`         | `fetch()` + GET routes with hard-coded data | FastAPI     |
-| 07     | `07-mongo-reads`           | Same page, data now from MongoDB        | FastAPI + Mongo |
-| 08     | `08-dependent-requests`    | Path parameters, product details, history | FastAPI + Mongo |
-| 09     | `09-post-customer`         | POST, JSON bodies, Pydantic validation  | FastAPI + Mongo |
-| 10     | `10-post-purchase`         | Recording a purchase with server-side pricing | FastAPI + Mongo |
-| 11     | `11-keyword-search`        | Local search first, then `?q=` on the server | FastAPI + Mongo |
-| 12     | `12-search-as-you-type`    | Debounce, minimum length, out-of-order responses | FastAPI + Mongo |
-| 13     | `13-filter-and-sort`       | Price filters, validated sort options   | FastAPI + Mongo |
-| 14     | `14-redis-cache`           | Cache-aside, expiry, invalidation; the complete app | FastAPI + Mongo + Redis |
+| Lesson | Folder                  | Focus                                               | Needs a server?         |
+| ------ | ----------------------- | --------------------------------------------------- | ----------------------- |
+| 00     | `00-minimal-api`        | Preview: the smallest FastAPI app                   | FastAPI + Mongo         |
+| 01     | `01-the-data`           | The `noidx_10k` database and the goal               | Mongo (mongosh)         |
+| 02     | `02-html-forms`         | Forms, labels, inputs, selects                      | No                      |
+| 03     | `03-alpine-state`       | `x-data`, `x-text`, `x-model`, `x-show`             | No                      |
+| 04     | `04-alpine-events`      | `@click`, `@input`, `@change`, `@submit.prevent`    | No                      |
+| 05     | `05-local-arrays`       | `x-for`, `:key`, `:value`, `:disabled`              | No                      |
+| 06     | `06-first-fastapi`      | `fetch()` + GET routes with hard-coded data         | FastAPI                 |
+| 07     | `07-mongo-reads`        | Same page, data now from MongoDB                    | FastAPI + Mongo         |
+| 08     | `08-dependent-requests` | Path parameters, product details, history           | FastAPI + Mongo         |
+| 09     | `09-post-customer`      | POST, JSON bodies, Pydantic validation              | FastAPI + Mongo         |
+| 10     | `10-post-purchase`      | Recording a purchase with server-side pricing       | FastAPI + Mongo         |
+| 11     | `11-keyword-search`     | Local search first, then `?q=` on the server        | FastAPI + Mongo         |
+| 12     | `12-search-as-you-type` | Debounce, minimum length, out-of-order responses    | FastAPI + Mongo         |
+| 13     | `13-filter-and-sort`    | Price filters, validated sort options               | FastAPI + Mongo         |
+| 14     | `14-redis-cache`        | Cache-aside, expiry, invalidation; the complete app | FastAPI + Mongo + Redis |
 
-Every folder has a `README.md` that explains each new HTML element, Alpine
-directive or Python line, followed by an **Activity** and a **Checkpoint**.
-Within a lesson, files are numbered (`03a-…`, `03b-…`) and each one adds a
-single new idea to the one before it.
+Every folder has a `README.md` that explains each new HTML element, Alpine directive or Python line, followed by an **Activity** and a **Checkpoint**. Within a lesson, files are numbered (`03a-…`, `03b-…`) and each one adds a single new idea to the one before it.
 
 ## One-time setup
 
@@ -85,10 +82,10 @@ export MONGO_DB=noidx_10k_dev
 
 ## Libraries, and why so few
 
-| Library                  | Used for                                         |
-| ------------------------ | ------------------------------------------------ |
-| Alpine.js (from a CDN)   | Reactive HTML without a build step               |
+| Library                   | Used for                                                                                                                |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Alpine.js (from a CDN)    | Reactive HTML without a build step                                                                                      |
 | Tailwind CSS (from a CDN) | Styling with utility classes (explained in lesson 02c). Delete its `<script>` and everything still works, just unstyled |
-| FastAPI + Uvicorn        | Python web routes and the web server             |
-| PyMongo                  | Talking to MongoDB                               |
-| redis-py                 | Lesson 14 only                                   |
+| FastAPI + Uvicorn         | Python web routes and the web server                                                                                    |
+| PyMongo                   | Talking to MongoDB                                                                                                      |
+| redis-py                  | Lesson 14 only                                                                                                          |
