@@ -48,5 +48,5 @@ datasets/armageddon/*.json
 # Instructor-only material: answer keys, solutions, notes. Never committed.
 .profzone/
 .claude.md
-datasets/images/
+#datasets/images/
 Lessons/11-keyword-search_Img/images/
