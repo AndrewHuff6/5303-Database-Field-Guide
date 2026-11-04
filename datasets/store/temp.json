@@ -1,0 +1,7 @@
+{"_id":{"$oid":"6ae251d5fb5e4205a58b827d"},"product_id":1,"sort_order":0,"image_id":"41M6GWA90AL","path":"images/a9/a96e15d9.jpg","orig_width":500,"orig_height":315,"is_main":"t"}
+{"_id":{"$oid":"6ae251d5fb5e4205a58b827e"},"product_id":2,"sort_order":0,"image_id":"41655120HNL","path":"images/be/beaed26f.jpg","orig_width":500,"orig_height":432,"is_main":"t"}
+{"_id":{"$oid":"6ae251d5fb5e4205a58b827f"},"product_id":3,"sort_order":0,"image_id":"51z1CmPgYgL","path":"images/9b/9b239db3.jpg","orig_width":1050,"orig_height":600,"is_main":"t"}
+{"_id":{"$oid":"6ae251d5fb5e4205a58b8280"},"product_id":3,"sort_order":1,"image_id":"61sgeN1PiVL","path":"images/2a/2ae44adc.jpg","orig_width":1935,"orig_height":2500,"is_main":"f"}
+{"_id":{"$oid":"6ae251d5fb5e4205a58b8281"},"product_id":3,"sort_order":2,"image_id":"71ZSeQAbeGL","path":"images/9e/9eb555dd.jpg","orig_width":2560,"orig_height":1707,"is_main":"f"}
+{"_id":{"$oid":"6ae251d5fb5e4205a58b8282"},"product_id":4,"sort_order":0,"image_id":"41215NND90L","path":"images/f6/f62d29c2.jpg","orig_width":500,"orig_height":414,"is_main":"t"}
+{"_id":{"$oid":"6ae251d5fb5e4205a58b8283"},"product_id":4,"sort_order":1,"image_id":"51XYGD38DFL","path":"images/eb/eb1c62aa.jpg","orig_width":500,"orig_height":414,"is_main":"f"}
