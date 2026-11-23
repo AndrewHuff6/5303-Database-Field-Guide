@@ -2,7 +2,7 @@
 <summary>⚙️ Details</summary>
 
 ```yaml
-is_due: false
+is_due: true
 id: A04-Web_Api_Project
 name: A04-Web_Api_Project
 title: A Full-Stack Store Page
