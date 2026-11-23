@@ -118,3 +118,18 @@ The `.gitignore` here covers them; copy it if you don't have one.
 - Evidence that only shows successful requests. Four of the ten tests are
   errors.
 - `index.html` left reading a bare array, so the browser page breaks.
+
+## Check your folder
+
+The field guide's [check_completed.py](../../check_completed.py) compares
+your folder with this one and looks inside each file for work of your own.
+Run it from your course repo:
+
+```bash
+cd ~/5303/my-repo
+python ~/5303/5303-Database-Field-Guide/check_completed.py standardizing
+```
+
+✅ means the file is there with content of your own, 🟡 is worth a look,
+❌ is missing or still the template, and ⚪ is optional. It checks that your
+work is **there**, not that it's **right**.

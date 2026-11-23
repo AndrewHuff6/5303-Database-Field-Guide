@@ -159,3 +159,18 @@ there and copy your version into `Performance_Project/`.
 - DuckDB §1 predictions written after the measurements. Commit `01_why.md`
   before you run §7; your commit history shows it.
 - Only one engine's `results_*` folder: the DuckDB §7 comparison needs both.
+
+## Check your folder
+
+The field guide's [check_completed.py](../../check_completed.py) compares
+your folder with this one and looks inside each file for work of your own.
+Run it from your course repo:
+
+```bash
+cd ~/5303/my-repo
+python ~/5303/5303-Database-Field-Guide/check_completed.py performance
+```
+
+✅ means the file is there with content of your own, 🟡 is worth a look,
+❌ is missing or still the template, and ⚪ is optional. It checks that your
+work is **there**, not that it's **right**.
